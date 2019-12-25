@@ -1,5 +1,4 @@
 package com.javaweb_week.salefood.dao;
 
-public class Test {
-
+public class Testa {
 }
