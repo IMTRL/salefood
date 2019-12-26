@@ -7,37 +7,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ControllerA {
 
     @RequestMapping("/student-mainpage")
-    public String studentMainpage(){
+    public String studentMainpage() {
         return "Student_function";
     }
 
     @RequestMapping("/student-login")
-    public String studentLogin(){
+    public String studentLogin() {
         return "Student_login";
     }
 
     @RequestMapping("/student-regist")
-    public String studentRegist(){
+    public String studentRegist() {
         return "Student_regist";
     }
 
     @RequestMapping("/student-registing")
-    public String studentRegisting(){
+    public String studentRegisting() {
         return "Student_regist";
     }
 
     @RequestMapping("/student-info")
-    public String studentInfo(){
+    public String studentInfo() {
         return "Student_info";
     }
 
     @RequestMapping("/student-buyfood")
-    public String studentBuyfood(){
+    public String studentBuyfood() {
         return "Student_buyfood";
     }
 
     @RequestMapping("/student-orderlist")
-    public String studentOrderlist(){
+    public String studentOrderlist() {
         return "Student_orderlist";
+    }
+
+    @RequestMapping("/student-password-update")
+    public String studentPasswordPpdate() {
+        return "Student_password_update";
     }
 }
