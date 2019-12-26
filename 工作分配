@@ -27,3 +27,64 @@ cdm
 测试功能
 主界面
 食堂统计页面
+
+
+
+
+系统管理员表：SysManager
+属性名	    属性代码	类型	长度
+系统管理员编号	SMid	Int
+系统管理员账号	SMusername	String	20
+系统管理员密码	SMpassword	String	20
+系统管理员电话	SMphone	Long int
+
+食堂管理员表：RstManager
+属性名	属性代码	类型	长度
+食堂管理员编号	RMid	Int
+食堂管理员账号	RMusername	String	20
+食堂管理员密码	RMpassword	String	20
+食堂管理员电话	RMphone	Long int
+
+学生表：Student
+属性名	属性代码	类型	长度
+学生编号	Sid	Int
+学生姓名	Sname	String	20
+学生密码	Spassword	String	20
+学生余额	Sbalance	Float	10
+
+订单表：Orders
+属性名	属性代码	类型	长度
+订单编号	Oid	String	20
+订单金额	Omoney	Float	10
+订单时间年	Oyear	Int
+订单时间月	Omonth	Int
+订单时间日	Oday	Int
+
+菜品总表：AllFoods
+属性名	属性代码	类型	长度
+总表主码	Apk	Int
+菜组名称	Aname	String	20
+
+菜组表：Foods
+属性名	属性代码
+菜组号	Fid	Int
+菜组名	Fname	String	20
+菜品数量	Fnum	Int
+
+
+
+
+菜品表：Meat
+属性名	属性代码	类型	长度
+菜品编号	Mid	Int
+菜组编号	Meatid	Int
+菜名	Mname	String	20
+口味	Mstyle	String	20
+价格	Mprice	Float	10
+图片	Mpicture	String	20
+
+订单信息表：orderinfo
+属性名	属性代码	类型	长度
+订单编号	Oid	String	20
+菜品编号	Mid	Int
+数量	Onum	Int
