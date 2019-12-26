@@ -3,7 +3,12 @@ import java.util.List;
 import com.javaweb_week.salefood.dao.RstmanagerDao;
 import com.javaweb_week.salefood.entity.Rstmanager;
 import com.javaweb_week.salefood.service.RstmanagerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class RstmanagerServiceImpl implements RstmanagerService{
+    @Autowired
     private RstmanagerDao rstmanagerDao;
     @Override
     public long getRstmanagerRowCount(){
@@ -29,6 +34,11 @@ public class RstmanagerServiceImpl implements RstmanagerService{
     @Override
     public int updateRstmanagerById(Rstmanager enti){
         return rstmanagerDao.updateRstmanagerById(enti);
+    }
+
+    @Override
+    public Rstmanager rstmanagerLogin(String rmusername, String rmpassword) {
+        return rstmanagerDao.rstmanagerLogin(rmusername,rmpassword);
     }
 
     public RstmanagerDao getRstmanagerDao() {
