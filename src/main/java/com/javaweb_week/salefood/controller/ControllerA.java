@@ -10,4 +10,9 @@ public class ControllerA {
     public String studentLogin(){
         return "Student_login";
     }
+
+    @RequestMapping("/student-regist")
+    public String studentRegist(){
+        return "Student_login";
+    }
 }
