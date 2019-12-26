@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.RstmanagerDao">
+    <resultMap id="result_Rstmanager_Map" type="com.javaweb_week.salefood.entity.Rstmanager">
+        <id column="Rstmanager0" property="rmid" />
+        <result column="Rstmanager1" property="rmusername" />
+        <result column="Rstmanager2" property="rmpassword" />
+        <result column="Rstmanager3" property="rmphone" />
+    </resultMap>
+
+    <sql id="RstManager_Column">
+        RstManager.RMid as Rstmanager0
+        ,RstManager.RMusername as Rstmanager1
+        ,RstManager.RMpassword as Rstmanager2
+        ,RstManager.RMphone as Rstmanager3
+    </sql>
+
+    <select id="getRstmanagerRowCount" resultType="java.lang.Long">
+        select count(RMid) from RstManager
+    </select>
+    <select id="selectRstmanager" resultType="com.javaweb_week.salefood.entity.Rstmanager">
+        select 
+        <include refid="RstManager_Column" /> 
+        from RstManager
+    </select> 
+
+    <select id="selectRstmanagerById" parameterType="java.lang.Integer" resultType="com.javaweb_week.salefood.entity.Rstmanager">
+        select 
+            <include refid="RstManager_Column" /> 
+        from RstManager
+        where RstManager.RMid = #{id}
+    </select> 
+
+    <insert id="insertRstmanager" parameterType="com.javaweb_week.salefood.entity.Rstmanager">
+        insert into RstManager(RMid,RMusername,RMpassword,RMphone) 
+        values(#{rmid},#{rmusername},#{rmpassword},#{rmphone})
+    </insert>
+
+
+    <delete id="deleteRstmanagerById" parameterType="java.lang.Integer">
+        delete from RstManager
+        where RMid = #{id}
+    </delete>
+
+    <update id="updateRstmanagerById" parameterType="com.javaweb_week.salefood.entity.Rstmanager">
+        update RstManager set
+            RMusername=#{rmusername}
+            ,RMpassword=#{rmpassword}
+            ,RMphone=#{rmphone}
+        where RMid=#{rmid}
+    </update>
+
+    <!--登录的方法，@Param("rmusername")  and #{rmusername}   @Param("rmpassword")-->
+    <select id="rstmanagerLogin" resultType="com.javaweb_week.salefood.entity.Rstmanager">
+        select * from RstManager where RMusername = #{rmusername} and RMpassword = #{rmpassword}
+    </select>
+
+</mapper>
