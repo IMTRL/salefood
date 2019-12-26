@@ -42,7 +42,12 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-password-update")
-    public String studentPasswordPpdate() {
+    public String studentPasswordupdate() {
         return "Student_password_update";
+    }
+
+    @RequestMapping("/student-buycar")
+    public String studentbuycar() {
+        return "Student_buycar";
     }
 }
