@@ -13,6 +13,11 @@ public class ControllerA {
 
     @RequestMapping("/student-regist")
     public String studentRegist(){
-        return "Student_login";
+        return "Student_regist";
+    }
+
+    @RequestMapping("/student-registing")
+    public String studentRegisting(){
+        return "Student_regist";
     }
 }
