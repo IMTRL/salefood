@@ -3,23 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>学生功能页面</title>
-    <script>
-        function jumptoOL() {
-            window.location.href="/student-orderlist";
-        }
-
-        function jumptoBF() {
-            window.location.href="/student-buyfood";
-        }
-
-        function jumptoIN() {
-            window.location.href="/student-info";
-        }
-    </script>
 </head>
 <body>
-<input type="button" value="订单记录" onclick="jumptoOL()">
-<input type="button" value="开始订餐" onclick="jumptoBF()">
-<input type="button" value="管理账号" onclick="jumptoIN()">
+<a href="/student-orderlist">订单记录</a>
+<a href="/student-buyfood">开始订餐</a>
+<a href="/student-info">管理账号</a>
 </body>
 </html>

@@ -13,7 +13,7 @@ import java.util.Map;
 public class ControllerA {
 
     @Autowired
-    private Student student = new Student();
+    private Student student;
 
     @RequestMapping("/student-login")
     public String studentLogin() {
