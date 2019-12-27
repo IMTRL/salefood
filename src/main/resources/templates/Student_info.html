@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>账号管理</title>
-    <script>
-        function jumptoPU() {
-            window.location.href="/student-password-update";
-        }
-    </script>
+
 </head>
 <body>
-姓名：<input type="text" th:value="${Sid}" readonly="readonly">
-学号：<input type="text" th:value="${Sname}" readonly="readonly">
-余额：<input type="text" th:value="${Sbalance}" readonly="readonly">
-<input type="button" onclick="jumptoPU()" value="修改密码">
+姓名：<input type="text" th:value="${sinfo.getSname()}" readonly="readonly">
+学号：<input type="text" th:value="${sinfo.getSid()}" readonly="readonly">
+余额：<input type="text" th:value="${sinfo.getSbalance()}" readonly="readonly">
+<a href="/student-password-update">修改密码</a>
 
 </body>
 </html>
