@@ -10,9 +10,9 @@
     </script>
 </head>
 <body>
-姓名：<input type="text" th:value="${Sid}" readonly="readonly">
-学号：<input type="text" th:value="${Sname}" readonly="readonly">
-余额：<input type="text" th:value="${Sbalance}" readonly="readonly">
+姓名：<input type="text" th:value="${sinfo.getSname()}" readonly="readonly">
+学号：<input type="text" th:value="${sinfo.getSid()}" readonly="readonly">
+余额：<input type="text" th:value="${sinfo.getSbalance()}" readonly="readonly">
 <input type="button" onclick="jumptoPU()" value="修改密码">
 
 </body>
