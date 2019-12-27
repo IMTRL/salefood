@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.AllfoodsDao">
+    <resultMap id="result_Allfoods_Map" type="com.javaweb_week.salefood.entity.Allfoods">
+        <id column="Allfoods0" property="apk" />
+        <result column="Allfoods1" property="aname" />
+    </resultMap>
+
+    <sql id="AllFoods_Column">
+        AllFoods.Apk as Allfoods0
+        ,AllFoods.Aname as Allfoods1
+    </sql>
+
+    <select id="getAllfoodsRowCount" resultType="java.lang.Long">
+        select count(Apk) from AllFoods
+    </select>
+    <select id="selectAllfoods" resultMap="result_Allfoods_Map">
+        select 
+        <include refid="AllFoods_Column" /> 
+        from AllFoods
+    </select> 
+
+    <select id="selectAllfoodsById" parameterType="java.lang.Integer" resultMap="result_Allfoods_Map">
+        select 
+            <include refid="AllFoods_Column" /> 
+        from AllFoods
+        where AllFoods.Apk = #{id}
+    </select> 
+
+
+    <insert id="insertAllfoods" parameterType="com.javaweb_week.salefood.entity.Allfoods">
+        insert into AllFoods(Apk,Aname) 
+        values(#{apk},#{aname})
+    </insert>
+
+
+    <delete id="deleteAllfoodsById" parameterType="java.lang.Integer">
+        delete from AllFoods
+        where Apk = #{id}
+    </delete>
+
+    <update id="updateAllfoodsById" parameterType="com.javaweb_week.salefood.entity.Allfoods">
+        update AllFoods set
+            Aname=#{aname}
+        where Apk=#{apk}
+    </update>
+
+
+
+</mapper>

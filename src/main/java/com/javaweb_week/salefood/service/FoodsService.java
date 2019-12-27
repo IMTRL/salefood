@@ -1,5 +1,7 @@
 package com.javaweb_week.salefood.service;
 import java.util.List;
+
+import com.github.pagehelper.PageInfo;
 import com.javaweb_week.salefood.entity.Foods;
 public interface FoodsService{
     long getFoodsRowCount();
@@ -8,5 +10,6 @@ public interface FoodsService{
     int insertFoods(Foods value);
     int deleteFoodsById(Integer id);
     int updateFoodsById(Foods enti);
+
 
 }
