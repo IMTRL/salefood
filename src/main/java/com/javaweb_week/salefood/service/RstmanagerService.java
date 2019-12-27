@@ -10,5 +10,5 @@ public interface RstmanagerService{
     int deleteRstmanagerById(Integer id);
     int updateRstmanagerById(Rstmanager enti);
     //登录方法
-    Rstmanager rstmanagerLogin(String rmusername, String rmpassword);
+    Rstmanager RstManagerLogin(String rmusername, String rmpassword);
 }

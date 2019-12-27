@@ -51,7 +51,7 @@
     </update>
 
     <!--登录的方法，@Param("rmusername")  and #{rmusername}   @Param("rmpassword")-->
-    <select id="rstmanagerLogin" resultType="com.javaweb_week.salefood.entity.Rstmanager">
+    <select id="RstManagerLogin" resultType="com.javaweb_week.salefood.entity.Rstmanager">
         select * from RstManager where RMusername = #{rmusername} and RMpassword = #{rmpassword}
     </select>
 

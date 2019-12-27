@@ -14,5 +14,5 @@ public interface RstmanagerDao{
     int updateRstmanagerById(Rstmanager enti);
 
     //登录方法
-    Rstmanager rstmanagerLogin(@Param("rmusername") String rmusername, @Param("rmpassword") String rmpassword);
+    Rstmanager RstManagerLogin(@Param("rmusername") String rmusername, @Param("rmpassword") String rmpassword);
 }

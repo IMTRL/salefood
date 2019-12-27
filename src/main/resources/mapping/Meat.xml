@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.MeatDao">
+    <resultMap id="result_Meat_Map" type="com.javaweb_week.salefood.entity.Meat">
+        <id column="Meat0" property="mid" />
+        <result column="Meat1" property="fid" />
+        <result column="Meat2" property="meatid" />
+        <result column="Meat3" property="mname" />
+        <result column="Meat4" property="mstyle" />
+        <result column="Meat5" property="mprice" />
+        <result column="Meat6" property="mpicture" />
+    </resultMap>
+
+    <sql id="Meat_Column">
+        Meat.Mid as Meat0
+        ,Meat.Fid as Meat1
+        ,Meat.Meatid as Meat2
+        ,Meat.Mname as Meat3
+        ,Meat.Mstyle as Meat4
+        ,Meat.Mprice as Meat5
+        ,Meat.Mpicture as Meat6
+    </sql>
+
+    <select id="getMeatRowCount" resultType="java.lang.Long">
+        select count(Mid) from Meat
+    </select>
+    <select id="selectMeat" resultMap="result_Meat_Map">
+        select 
+        <include refid="Meat_Column" /> 
+        from Meat
+    </select> 
+
+    <select id="selectMeatById" parameterType="java.lang.Integer" resultMap="result_Meat_Map">
+        select 
+            <include refid="Meat_Column" /> 
+        from Meat
+        where Meat.Mid = #{id}
+    </select> 
+
+
+    <insert id="insertMeat" parameterType="com.javaweb_week.salefood.entity.Meat">
+        insert into Meat(Mid,Fid,Meatid,Mname,Mstyle,Mprice,Mpicture) 
+        values(#{mid},#{fid},#{meatid},#{mname},#{mstyle},#{mprice},#{mpicture})
+    </insert>
+
+
+
+    <delete id="deleteMeatById" parameterType="java.lang.Integer">
+        delete from Meat
+        where Mid = #{id}
+    </delete>
+
+    <update id="updateMeatById" parameterType="com.javaweb_week.salefood.entity.Meat">
+        update Meat set
+            Fid=#{fid}
+            ,Meatid=#{meatid}
+            ,Mname=#{mname}
+            ,Mstyle=#{mstyle}
+            ,Mprice=#{mprice}
+            ,Mpicture=#{mpicture}
+        where Mid=#{mid}
+    </update>
+
+
+
+</mapper>

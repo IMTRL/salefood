@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.FoodsDao">
+    <resultMap id="result_Foods_Map" type="com.javaweb_week.salefood.entity.Foods">
+        <id column="Foods0" property="fid" />
+        <result column="Foods1" property="apk" />
+        <result column="Foods2" property="fname" />
+        <result column="Foods3" property="fnum" />
+    </resultMap>
+
+    <sql id="Foods_Column">
+        Foods.Fid as Foods0
+        ,Foods.Apk as Foods1
+        ,Foods.Fname as Foods2
+        ,Foods.Fnum as Foods3
+    </sql>
+
+    <select id="getFoodsRowCount" resultType="java.lang.Long">
+        select count(Fid) from Foods
+    </select>
+    <select id="selectFoods" resultMap="result_Foods_Map">
+        select 
+        <include refid="Foods_Column" /> 
+        from Foods
+    </select> 
+
+    <select id="selectFoodsById" parameterType="java.lang.Integer" resultMap="result_Foods_Map">
+        select 
+            <include refid="Foods_Column" /> 
+        from Foods
+        where Foods.Fid = #{id}
+    </select> 
+
+
+    <insert id="insertFoods" parameterType="com.javaweb_week.salefood.entity.Foods">
+        insert into Foods(Fid,Apk,Fname,Fnum) 
+        values(#{fid},#{apk},#{fname},#{fnum})
+    </insert>
+
+
+
+    <delete id="deleteFoodsById" parameterType="java.lang.Integer">
+        delete from Foods
+        where Fid = #{id}
+    </delete>
+
+    <update id="updateFoodsById" parameterType="com.javaweb_week.salefood.entity.Foods">
+        update Foods set
+            Apk=#{apk}
+            ,Fname=#{fname}
+            ,Fnum=#{fnum}
+        where Fid=#{fid}
+    </update>
+
+
+
+</mapper>

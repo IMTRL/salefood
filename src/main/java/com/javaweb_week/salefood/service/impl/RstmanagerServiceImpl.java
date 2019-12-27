@@ -37,8 +37,8 @@ public class RstmanagerServiceImpl implements RstmanagerService{
     }
 
     @Override
-    public Rstmanager rstmanagerLogin(String rmusername, String rmpassword) {
-        return rstmanagerDao.rstmanagerLogin(rmusername,rmpassword);
+    public Rstmanager RstManagerLogin(String rmusername, String rmpassword) {
+        return rstmanagerDao.RstManagerLogin(rmusername,rmpassword);
     }
 
     public RstmanagerDao getRstmanagerDao() {
