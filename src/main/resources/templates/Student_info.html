@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账号管理</title>
+    <script>
+        function jumptoPU() {
+            window.location.href="/student-password-update";
+        }
+    </script>
+</head>
+<body>
+姓名：<input type="text" th:value="${Sid}" readonly="readonly">
+学号：<input type="text" th:value="${Sname}" readonly="readonly">
+余额：<input type="text" th:value="${Sbalance}" readonly="readonly">
+<input type="button" onclick="jumptoPU()" value="修改密码">
+
+</body>
+</html>
