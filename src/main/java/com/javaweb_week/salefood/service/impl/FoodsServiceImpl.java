@@ -1,5 +1,8 @@
 package com.javaweb_week.salefood.service.impl;
 import java.util.List;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.javaweb_week.salefood.dao.FoodsDao;
 import com.javaweb_week.salefood.entity.Foods;
 import com.javaweb_week.salefood.service.FoodsService;
@@ -37,6 +40,7 @@ public class FoodsServiceImpl implements FoodsService{
     }
 
 
+
     public FoodsDao getFoodsDao() {
         return this.foodsDao;
     }
@@ -44,5 +48,6 @@ public class FoodsServiceImpl implements FoodsService{
     public void setFoodsDao(FoodsDao foodsDao) {
         this.foodsDao = foodsDao;
     }
+
 
 }
