@@ -3,12 +3,20 @@ package com.javaweb_week.salefood.entity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.*;
+
 @Service
+@Entity
+@Table(name = "Student")
 public class Student {
+    @Id
     private Integer sid;
+    @Column
     private String sname;
     @Value("0000")
+    @Column
     private String spassword;
+    @Column
     private Double sbalance;
     public Student() {
         super();
