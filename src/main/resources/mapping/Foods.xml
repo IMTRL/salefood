@@ -3,16 +3,14 @@
 <mapper namespace="com.javaweb_week.salefood.dao.FoodsDao">
     <resultMap id="result_Foods_Map" type="com.javaweb_week.salefood.entity.Foods">
         <id column="Foods0" property="fid" />
-        <result column="Foods1" property="apk" />
-        <result column="Foods2" property="fname" />
-        <result column="Foods3" property="fnum" />
+        <result column="Foods1" property="fname" />
+        <result column="Foods2" property="fnum" />
     </resultMap>
 
     <sql id="Foods_Column">
         Foods.Fid as Foods0
-        ,Foods.Apk as Foods1
-        ,Foods.Fname as Foods2
-        ,Foods.Fnum as Foods3
+        ,Foods.Fname as Foods1
+        ,Foods.Fnum as Foods2
     </sql>
 
     <select id="getFoodsRowCount" resultType="java.lang.Long">
@@ -20,21 +18,21 @@
     </select>
     <select id="selectFoods" resultMap="result_Foods_Map">
         select 
-        <include refid="Foods_Column" /> 
+        <include refid="Foods_Column" />
         from Foods
     </select> 
 
     <select id="selectFoodsById" parameterType="java.lang.Integer" resultMap="result_Foods_Map">
         select 
-            <include refid="Foods_Column" /> 
+            <include refid="Foods_Column" />
         from Foods
         where Foods.Fid = #{id}
     </select> 
 
 
     <insert id="insertFoods" parameterType="com.javaweb_week.salefood.entity.Foods">
-        insert into Foods(Fid,Apk,Fname,Fnum) 
-        values(#{fid},#{apk},#{fname},#{fnum})
+        insert into Foods(Fid,Fname,Fnum)
+        values(#{fid},#{fname},#{fnum})
     </insert>
 
 
@@ -46,8 +44,7 @@
 
     <update id="updateFoodsById" parameterType="com.javaweb_week.salefood.entity.Foods">
         update Foods set
-            Apk=#{apk}
-            ,Fname=#{fname}
+             Fname=#{fname}
             ,Fnum=#{fnum}
         where Fid=#{fid}
     </update>

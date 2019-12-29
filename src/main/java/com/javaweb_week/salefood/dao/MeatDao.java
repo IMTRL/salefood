@@ -6,7 +6,7 @@ import java.util.List;
 @Repository
 public interface MeatDao{
     long getMeatRowCount();
-    List<Meat> selectMeat();
+    List<Meat> selectMeat(Integer Fid);
     Meat selectMeatById(Integer id);
     int insertMeat(Meat value);
     int deleteMeatById(Integer id);

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>菜品信息</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>菜品编号</th>
+        <th>菜名</th>
+        <th>口味</th>
+        <th>价格</th>
+        <th>图片</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody th:if="${#lists.size(meat) > 0}">
+    <tr th:each="meat:${meat}">
+        <td th:text="${meat.mid}"></td>
+        <td th:text="${meat.mname}"></td>
+        <td th:text="${meat.mstyle}"></td>
+        <td th:text="${meat.mprice}"></td>
+        <td th:text="${meat.mpicture}"></td>
+        <td>
+            <a th:href="@{/meat_update/(Mid=${meat.mid})}">修改</a>
+            <a th:href="@{/meat_delete/(Mid=${meat.mid})}">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br><a href="/add_Meat">添加菜品</a>
+<br><a href="/get_Foods">返回上级页面</a>
+</body>
+</html>

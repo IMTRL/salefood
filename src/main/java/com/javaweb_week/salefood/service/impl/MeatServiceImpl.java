@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 public class MeatServiceImpl implements MeatService{
     @Autowired
     private MeatDao meatDao;
+
     @Override
-    public long getMeatRowCount(){
-        return meatDao.getMeatRowCount();
+    public long getMeatRowCount() {
+        return 0;
     }
+
     @Override
-    public List<Meat> selectMeat(){
-        return meatDao.selectMeat();
+    public List<Meat> selectMeat(Integer Fid){
+        return meatDao.selectMeat(Fid);
     }
     @Override
     public Meat selectMeatById(Integer id){

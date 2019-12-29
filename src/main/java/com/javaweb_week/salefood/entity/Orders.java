@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "orders")
 public class Orders {
+
     private String oid;
     private Integer sid;
     private Double omoney;

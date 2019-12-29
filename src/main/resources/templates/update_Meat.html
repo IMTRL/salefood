@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改菜品信息</title>
+</head>
+<body>
+<form action="/update_Meat" method="post">
+    <input type="hidden" name="Mid" th:value="${meat.mid}" >
+    菜组编号<input type="text" name="Meatid" th:value="${meat.meatid}" readonly="readonly"/><br>
+    菜名<input type="text" name="Mname" th:value="${meat.mname}"/><br>
+    口味<input type="text" name="Mstyle" th:value="${meat.mstyle}"/><br>
+    价格<input type="text" name="Mprice" th:value="${meat.mprice}"/><br>
+    图片<input type="text" name="Mpicture" th:value="${meat.mpicture}"/><br>
+    <input type="submit" value="修改"/>
+</form>
+</body>
+<a th:href="@{/f_meat/(Fid=${meat.meatid})}">取消修改</a>
+</html>

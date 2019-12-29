@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改菜组信息</title>
+</head>
+<body>
+<form action="/update_Foods" method="post">
+    <input type="hidden" name="Fid" th:value="${foods.fid}" >
+    菜组名称<input type="text" name="Fname" th:value="${foods.fname}"/><br>
+    菜品数量<input type="text" name="Fnum" th:value="${foods.fnum}"/><br>
+    <input type="submit" value="修改"/>
+</form>
+</body>
+<br><a href="/get_Foods">取消修改</a>
+</html>
