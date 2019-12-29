@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>菜组信息</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>菜组编号</th>
+        <th>菜组名称</th>
+        <th>菜品数量</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody th:if="${#lists.size(foods) > 0}">
+    <tr th:each="foods:${foods}">
+        <td th:text="${foods.Fid}"></td>
+        <td th:text="${foods.Fname}"></td>
+        <td th:text="${foods.Fnum}"></td>
+        <td>
+            <a th:href="@{/f_update/(Fid=${foods.Fid})}">修改</a>
+            <a th:href="@{/f_delete/(Fid=${foods.Fid})}">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
