@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>学生功能页面</title>
 </head>
 <body>
-<a href="/student-orderlist">订单记录</a>
-<a href="/student-buyfood">开始订餐</a>
-<a href="/student-info">管理账号</a>
+<a th:href="@{/student-orderlist/(userId=${session.userId})}">订单记录</a>
+<a th:href="@{/student-buyfood/(userId=${session.userId})}">开始订餐</a>
+<a th:href="@{/student-info/(userId=${session.userId})}">管理账号</a>
 </body>
 </html>

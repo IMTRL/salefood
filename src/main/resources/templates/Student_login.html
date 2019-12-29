@@ -8,7 +8,7 @@
 <h1>登录</h1>
 <p th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></p>
 <form action="/student-logining" method="post">
-    <span>账号</span><input type="text" name="username"><br>
+    <span>账号</span><input type="text" name="sno"><br>
     <span>密码</span><input type="password" name="userpassword">
     <input type="submit" value="登录">
 </form>

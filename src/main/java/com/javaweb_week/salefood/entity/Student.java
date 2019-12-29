@@ -5,36 +5,31 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 
-@Service
 @Entity
-@Table(name = "Student")
+@Service
+@Table(name = "student")
 public class Student {
-    @Id
+
     private Integer sid;
-    @Column
+
     private String sname;
-    @Value("0000")
-    @Column
+
     private String spassword;
-    @Column
+
     private Double sbalance;
+
     public Student() {
         super();
     }
-    public Student(Integer sid,String sname,String spassword,Double sbalance) {
-        super();
+
+    public Student(Integer sid, String sname, String spassword, Double sbalance) {
         this.sid = sid;
         this.sname = sname;
         this.spassword = spassword;
         this.sbalance = sbalance;
     }
 
-    public Student(Integer sid, String sname, Double sbalance) {
-        this.sid = sid;
-        this.sname = sname;
-        this.sbalance = sbalance;
-    }
-
+    @Id
     public Integer getSid() {
         return this.sid;
     }
@@ -43,6 +38,7 @@ public class Student {
         this.sid = sid;
     }
 
+    @Column
     public String getSname() {
         return this.sname;
     }
@@ -51,6 +47,7 @@ public class Student {
         this.sname = sname;
     }
 
+    @Column
     public String getSpassword() {
         return this.spassword;
     }
@@ -59,6 +56,7 @@ public class Student {
         this.spassword = spassword;
     }
 
+    @Column
     public Double getSbalance() {
         return this.sbalance;
     }

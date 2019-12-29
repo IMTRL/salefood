@@ -9,7 +9,7 @@
 姓名：<input type="text" th:value="${sinfo.getSname()}" readonly="readonly">
 学号：<input type="text" th:value="${sinfo.getSid()}" readonly="readonly">
 余额：<input type="text" th:value="${sinfo.getSbalance()}" readonly="readonly">
-<a href="/student-password-update">修改密码</a>
+<a th:href="@{/student-password-update/(userId=${session.userId})}">修改密码</a>
 
 </body>
 </html>
