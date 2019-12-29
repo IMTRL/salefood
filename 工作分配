@@ -58,6 +58,7 @@ cdm
 订单时间年	Oyear	Int
 订单时间月	Omonth	Int
 订单时间日	Oday	Int
+订单支付状态  opayed  Boolean
 
 菜品总表：AllFoods
 属性名	属性代码	类型	长度

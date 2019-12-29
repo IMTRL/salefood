@@ -1,6 +1,8 @@
 package com.javaweb_week.salefood.controller;
 
+import com.javaweb_week.salefood.entity.Orders;
 import com.javaweb_week.salefood.entity.Student;
+import com.javaweb_week.salefood.repository.OrdersRepository;
 import com.javaweb_week.salefood.repository.StudentRepository;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class ControllerA {
     private Student student;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private OrdersRepository ordersRepository;
 
     @RequestMapping("/student-login")
     public String studentLogin() {
@@ -72,7 +76,10 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-orderlist")
-    public String studentOrderlist() {
+    public String studentOrderlist(@RequestParam("userId")int id,
+                                   Map<String,List<Orders>>map) {
+        List<Orders>result=ordersRepository.findOrdersBySid(id);
+        map.put("orders",result);
         return "Student_orderlist";
     }
 
