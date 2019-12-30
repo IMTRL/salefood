@@ -1,7 +1,6 @@
 package com.javaweb_week.salefood.entity;
 public class Meat {
     private Integer mid;
-    private Integer fid;
     private Integer meatid;
     private String mname;
     private String mstyle;
@@ -10,10 +9,9 @@ public class Meat {
     public Meat() {
         super();
     }
-    public Meat(Integer mid,Integer fid,Integer meatid,String mname,String mstyle,Double mprice,String mpicture) {
+    public Meat(Integer mid,Integer meatid,String mname,String mstyle,Double mprice,String mpicture) {
         super();
         this.mid = mid;
-        this.fid = fid;
         this.meatid = meatid;
         this.mname = mname;
         this.mstyle = mstyle;
@@ -26,14 +24,6 @@ public class Meat {
 
     public void setMid(Integer mid) {
         this.mid = mid;
-    }
-
-    public Integer getFid() {
-        return this.fid;
-    }
-
-    public void setFid(Integer fid) {
-        this.fid = fid;
     }
 
     public Integer getMeatid() {

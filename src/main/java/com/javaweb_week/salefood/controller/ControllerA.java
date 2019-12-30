@@ -71,7 +71,8 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-buyfood")
-    public String studentBuyfood() {
+    public String studentBuyfood(@RequestParam("userId")int id) {
+
         return "Student_buyfood";
     }
 

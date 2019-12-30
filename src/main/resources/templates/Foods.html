@@ -20,13 +20,14 @@
         <td th:text="${foods.Fname}"></td>
         <td th:text="${foods.Fnum}"></td>
         <td>
+            <a th:href="@{/f_meat/(Fid=${foods.Fid})}">菜品管理</a>
             <a th:href="@{/f_update/(Fid=${foods.Fid})}">修改</a>
             <a th:href="@{/f_delete/(Fid=${foods.Fid})}">删除</a>
         </td>
     </tr>
     </tbody>
 </table>
-
-
+<br><a href="/add_Foods">添加菜组</a>
+<br><a href="/return_main">返回上级页面</a>
 </body>
 </html>
