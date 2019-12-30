@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>学生注册</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/zhuce.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>学生注册</h1>
+    </div>
 <form action="/student-registing" method="post">
+    <div class="logo2">
     <span>姓名：</span><input type="text" name="name">
+    </div>
+    <div class="logo2">
     <span>学号：</span><input type="text" name="number">
+    </div>
+    <div class="logo2">
     <span>密码：</span><input type="text" name="password">
-    <input type="submit" value="注册"><input type="reset" value="重置">
+    </div>
+    <div class="logo3">
+     <input  class="zhuce" type="submit" value="注册">
+        <input    class="chongzhi"  type="reset" value="重置"><br>
+    </div>
+    <div class="logo4">
+    <a href="/student-login">已有账号？</a>
+    </div>
+
 </form>
-<a href="/student-login">已有账号？</a>
+</div>
+
 </body>
 </html>
