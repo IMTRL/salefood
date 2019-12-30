@@ -3,10 +3,7 @@ package com.javaweb_week.salefood.controller;
 import com.javaweb_week.salefood.entity.Orderinfo;
 import com.javaweb_week.salefood.entity.Orders;
 import com.javaweb_week.salefood.entity.Student;
-import com.javaweb_week.salefood.repository.MeatRepository;
-import com.javaweb_week.salefood.repository.OrderinfoRepository;
-import com.javaweb_week.salefood.repository.OrdersRepository;
-import com.javaweb_week.salefood.repository.StudentRepository;
+import com.javaweb_week.salefood.repository.*;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +31,10 @@ public class ControllerA {
     private OrderinfoRepository orderinfoRepository;
     @Autowired
     private MeatRepository meatRepository;
+    @Autowired
+    private FoodsRepository foodsRepository;
 
+    HttpSession sessionA;
 
     @RequestMapping("/student-login")
     public String studentLogin() {
@@ -45,9 +46,10 @@ public class ControllerA {
                                   @RequestParam("userpassword") String userpassword,
                                   Map<String, String> map,
                                   HttpServletRequest request) {
-        List<Student>result=studentRepository.findStudentBySidAndSpassword(sno,userpassword);
-        if (result.size()!=0) {
-            request.getSession().setAttribute("userId",result.get(0).getSid());
+        List<Student> result = studentRepository.findStudentBySidAndSpassword(sno, userpassword);
+        if (result.size() != 0) {
+            sessionA = request.getSession();
+            sessionA.setAttribute("userId", result.get(0).getSid());
             return "Student_function";
         } else {
             map.put("msg", "用户名或密码错误");
@@ -65,7 +67,7 @@ public class ControllerA {
                                    @RequestParam("number") Integer number,
                                    @RequestParam("password") String password) {
         if (!StringUtils.isNullOrEmpty(name) && !StringUtils.isNullOrEmpty(password)) {
-            student=new Student(number,name,password,0.0);
+            student = new Student(number, name, password, 0.0);
             studentRepository.saveAndFlush(student);
         }
 
@@ -73,52 +75,55 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-info")
-    public String studentInfo(Map<String, Student> map,
-                              @RequestParam("userId") Integer id) {
-        List<Student>result=studentRepository.findStudentBySid(id);
-        map.put("sinfo",result.get(0));
+    public String studentInfo(Map<String, Student> map) {
+
+
+        int id = (Integer) (sessionA.getAttribute("userId"));
+        List<Student> result = studentRepository.findStudentBySid(id);
+        map.put("sinfo", result.get(0));
         return "Student_info";
     }
 
     @RequestMapping("/student-buyfood")
-    public String studentBuyfood(@RequestParam("userId")int id) {
+    public String studentBuyfood() {
 
         return "Student_buyfood";
     }
 
     @RequestMapping("/student-orderlist")
-    public String studentOrderlist(@RequestParam("userId")int id,
-                                   Map<String,Object>map) {
-        List<Orders>resultA=ordersRepository.findOrdersBySid(id);
-        List<Map<String,Integer>>resultB=new LinkedList<>();
+    public String studentOrderlist(Map<String, Object> map) {
+        int id = (Integer) (sessionA.getAttribute("userId"));
+        List<Orders> resultA = ordersRepository.findOrdersBySid(id);
+        List<Map<String, Integer>> resultB = new LinkedList<>();
         for (Orders orders : resultA) {
-            Map<String,Integer>map1=new LinkedHashMap<>();
-            List<Orderinfo>resultb=orderinfoRepository.findOrderinfoByOid(orders.getOid());
+            Map<String, Integer> map1 = new LinkedHashMap<>();
+            List<Orderinfo> resultb = orderinfoRepository.findOrderinfoByOid(orders.getOid());
             for (Orderinfo orderinfo : resultb) {
-                String name=meatRepository.findMeatBByMid(orderinfo.getMid()).get(0).getMname();
-                int num=orderinfo.getOnum();
-                map1.put(name,num);
+                String name = meatRepository.findMeatBByMid(orderinfo.getMid()).get(0).getMname();
+                int num = orderinfo.getOnum();
+                map1.put(name, num);
             }
             resultB.add(map1);
         }
-        map.put("orders",resultA);
-        map.put("oinfo",resultB);
+        map.put("orders", resultA);
+        map.put("oinfo", resultB);
         return "Student_orderlist";
     }
 
     @RequestMapping("/student-password-update")
-    public String studentPasswordupdate(@RequestParam("userId") Integer id,
-                                        Map<String, Student> map) {
-        map.put("sinfo",studentRepository.findStudentBySid(id).get(0));
+    public String studentPasswordupdate(Map<String, Student> map) {
+        int id = (Integer) (sessionA.getAttribute("userId"));
+        map.put("sinfo", studentRepository.findStudentBySid(id).get(0));
         return "Student_password_update";
     }
+
     @RequestMapping("/student-password-updateing")
     public String studentPasswordupdateing(@RequestParam("newPA") String password,
-                                           @RequestParam("id") int id,
                                            Map<String, Student> map) {
-       studentRepository.updateStudentSpassword(password,id);
-        List<Student>result=studentRepository.findStudentBySid(id);
-        map.put("sinfo",result.get(0));
+        int id = (Integer) (sessionA.getAttribute("userId"));
+        studentRepository.updateStudentSpassword(password, id);
+        List<Student> result = studentRepository.findStudentBySid(id);
+        map.put("sinfo", result.get(0));
         return "Student_info";
     }
 
