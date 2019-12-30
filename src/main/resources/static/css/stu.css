@@ -2,7 +2,7 @@ html {
     height: 100%
 }
 body {
-    background: url("../images/11.jpg") 50% 50% repeat;
+    background: url("../images/24.jpg") 50% 50% repeat;
     background-size: cover;
 }
 .logo1
@@ -20,52 +20,26 @@ body {
     width: 430px;
     height: 550px;
     margin: -300px 0 0 -215px;
-    border: 1px solid #ffffff;
+    border: 1px solid black;
     border-radius: 20px;
-    overflow: hidden
+    overflow: hidden;
 }
-.logo2
+
+.logo4
 {
     position: relative;
-    width: 360px;
+    width: 300px;
     margin: 0 auto;
     padding-bottom: 30px;
+    padding-left: 20px;
 }
-.logo2 input
-{
-    width: 360px;
-    height: 48px;
-    border: 1px solid;
-
-    font-size: 18px;
-    color: black;
-    outline: none;
-
-}
-.logo3
-{
-    position: relative;
-    width: 360px;
-    margin: 0 auto;
-    padding-bottom: 30px;
-}
-.logo3 input
-{
-    width: 360px;
-    height: 48px;
-    border: 1px solid;
-    border-radius: 25px;
-    font-size: 18px;
-    color: black;
-    outline: none;
-}
-
 .logo4 a
 {
-    font-size: 20px;
+    font-size: 50px;
     color: black;
     text-decoration: none;
     padding-left: 50px;
+
 }
 .logo4 a:hover
 {
