@@ -1,7 +1,10 @@
 package com.javaweb_week.salefood.controller;
 
+import com.javaweb_week.salefood.entity.Orderinfo;
 import com.javaweb_week.salefood.entity.Orders;
 import com.javaweb_week.salefood.entity.Student;
+import com.javaweb_week.salefood.repository.MeatRepository;
+import com.javaweb_week.salefood.repository.OrderinfoRepository;
 import com.javaweb_week.salefood.repository.OrdersRepository;
 import com.javaweb_week.salefood.repository.StudentRepository;
 import com.mysql.cj.util.StringUtils;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +29,11 @@ public class ControllerA {
     private StudentRepository studentRepository;
     @Autowired
     private OrdersRepository ordersRepository;
+    @Autowired
+    private OrderinfoRepository orderinfoRepository;
+    @Autowired
+    private MeatRepository meatRepository;
+
 
     @RequestMapping("/student-login")
     public String studentLogin() {
@@ -78,9 +88,21 @@ public class ControllerA {
 
     @RequestMapping("/student-orderlist")
     public String studentOrderlist(@RequestParam("userId")int id,
-                                   Map<String,List<Orders>>map) {
-        List<Orders>result=ordersRepository.findOrdersBySid(id);
-        map.put("orders",result);
+                                   Map<String,Object>map) {
+        List<Orders>resultA=ordersRepository.findOrdersBySid(id);
+        List<Map<String,Integer>>resultB=new LinkedList<>();
+        for (Orders orders : resultA) {
+            Map<String,Integer>map1=new LinkedHashMap<>();
+            List<Orderinfo>resultb=orderinfoRepository.findOrderinfoByOid(orders.getOid());
+            for (Orderinfo orderinfo : resultb) {
+                String name=meatRepository.findMeatBByMid(orderinfo.getMid()).get(0).getMname();
+                int num=orderinfo.getOnum();
+                map1.put(name,num);
+            }
+            resultB.add(map1);
+        }
+        map.put("orders",resultA);
+        map.put("oinfo",resultB);
         return "Student_orderlist";
     }
 
