@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>系统管理登录界面</title>
+    <title>系统管理员登录</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/222.css}">
 </head>
 <body>
-<form action="system-servlet" method="post">
-    账户<input type="text" name="id" size="15"/><br>
-    密码<input type="text" name="password" size="15"/><br>
-    <input type="submit" value="登录"/>
-    <input type="reset" value="重置"/>
-</form>
+<div class="logo">
+    <div class="logo1">
+        <h1>系统管理员登录</h1>
+        <img th:src="@{/images/6.jpg}" width="120px" height="120px">
+    </div>
+
+    <form action="/student-logining" method="post">
+        <div class="logo2">
+            <input   id="username" type="text" name="sno" autocomplete="off" placeholder="管理员账号"><br>
+        </div>
+        <div class="logo2">
+            <input  id="userpassword"  type="password" name="userpassword"  placeholder="登录密码" ><br>
+        </div>
+        <div class="logo3">
+            <input type="submit" value="登录"><br>
+        </div>
+    </form>
+</div>
 </body>
 </html>
