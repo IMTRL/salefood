@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javaweb_week.salefood.dao.MeatDao">
-    <resultMap id="result_Meat_Map" type="com.javaweb_week.salefood.entity.Meat">
-        <id column="Meat0" property="mid" />
-        <result column="Meat1" property="meatid" />
-        <result column="Meat2" property="mname" />
-        <result column="Meat3" property="mstyle" />
-        <result column="Meat4" property="mprice" />
-        <result column="Meat5" property="mpicture" />
+    <resultMap id="result_meat_Map" type="com.javaweb_week.salefood.entity.Meat">
+        <id column="meat0" property="mid" />
+        <result column="meat1" property="meatid" />
+        <result column="meat2" property="mname" />
+        <result column="meat3" property="mstyle" />
+        <result column="meat4" property="mprice" />
+        <result column="meat5" property="mpicture" />
     </resultMap>
 
     <sql id="Meat_Column">
-        Meat.Mid as Meat0
-        ,Meat.Meatid as Meat1
-        ,Meat.Mname as Meat2
-        ,Meat.Mstyle as Meat3
-        ,Meat.Mprice as Meat4
-        ,Meat.Mpicture as Meat5
+        meat.mid as meat0
+        ,meat.meatid as meat1
+        ,meat.mname as meat2
+        ,meat.mstyle as meat3
+        ,meat.mprice as meat4
+        ,meat.mpicture as meat5
     </sql>
 
 
-    <select id="selectMeat" resultMap="result_Meat_Map">
+    <select id="selectMeat" resultMap="result_meat_Map">
         select
         <include refid="Meat_Column" />
-        from Meat
-        where Meat.Meatid=#{Fid}
+        from meat
+        where meat.meatid=#{Fid}
     </select> 
 
-    <select id="selectMeatById" parameterType="java.lang.Integer" resultMap="result_Meat_Map">
+    <select id="selectMeatById" parameterType="java.lang.Integer" resultMap="result_meat_Map">
         select
         <include refid="Meat_Column" />
-        from Meat
-        where Meat.Mid = #{id}
+        from meat
+        where meat.mid = #{id}
     </select> 
 
 
     <insert id="insertMeat" parameterType="com.javaweb_week.salefood.entity.Meat">
-        insert into Meat(Mid,Meatid,Mname,Mstyle,Mprice,Mpicture)
+        insert into meat(mid,meatid,mname,mstyle,mprice,mpicture)
         values(null,#{meatid},#{mname},#{mstyle},#{mprice},#{mpicture})
     </insert>
 
 
 
     <delete id="deleteMeatById" parameterType="java.lang.Integer">
-        delete from Meat
-        where Mid = #{id}
+        delete from meat
+        where mid = #{id}
     </delete>
 
     <update id="updateMeatById" parameterType="com.javaweb_week.salefood.entity.Meat">
-        update Meat set
-             Meatid=#{meatid}
-            ,Mname=#{mname}
-            ,Mstyle=#{mstyle}
-            ,Mprice=#{mprice}
-            ,Mpicture=#{mpicture}
-        where Mid=#{mid}
+        update meat set
+             meatid=#{meatid}
+            ,mname=#{mname}
+            ,mstyle=#{mstyle}
+            ,mprice=#{mprice}
+            ,mpicture=#{mpicture}
+        where mid=#{mid}
     </update>
 
 

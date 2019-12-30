@@ -8,14 +8,24 @@
 <body>
 <table>
     <tr>
-        <td>订单号</td><td>订单时间</td><td>订单金额</td><td>支付状态</td>
+        <td>订单号</td>
+        <td>订单时间</td>
+        <td>订购菜品</td>
+        <td>订单金额</td>
+        <td>支付状态</td>
     </tr>
     <tr th:each="order:${orders}">
         <td th:text="${order.getOid()}"></td>
         <td th:text="${order.getOyear()}+'年'+${order.getOmonth()}+'月'+${order.getOday()}+'日'"></td>
+
+        <td th:each="oinfon:${oinfo.get(0)}">
+            <td th:each="oo:${.keySet()}" th:text="${oo}+'('+${orderinfo.get(${oo})+'份)'}"></td>
+        </td>
+
         <td th:text="${order.getOmoney()}"></td>
         <td th:if="${order.getOpayed()}" th:text="已支付"></td>
         <td th:if="not ${order.getOpayed()}" th:text="未支付"></td>
+        <td><a th:text="详情" th:href=""></a></td>
     </tr>
 </table>
 <a th:href="@{/student-buycar}">购物车</a>
