@@ -8,45 +8,45 @@
     </resultMap>
 
     <sql id="Foods_Column">
-        Foods.Fid as Foods0
-        ,Foods.Fname as Foods1
-        ,Foods.Fnum as Foods2
+        foods.fid as Foods0
+        ,foods.fname as Foods1
+        ,foods.fnum as Foods2
     </sql>
 
     <select id="getFoodsRowCount" resultType="java.lang.Long">
-        select count(Fid) from Foods
+        select count(fid) from foods
     </select>
     <select id="selectFoods" resultMap="result_Foods_Map">
         select 
         <include refid="Foods_Column" />
-        from Foods
+        from foods
     </select> 
 
     <select id="selectFoodsById" parameterType="java.lang.Integer" resultMap="result_Foods_Map">
         select 
             <include refid="Foods_Column" />
-        from Foods
-        where Foods.Fid = #{id}
+        from foods
+        where foods.fid = #{id}
     </select> 
 
 
     <insert id="insertFoods" parameterType="com.javaweb_week.salefood.entity.Foods">
-        insert into Foods(Fid,Fname,Fnum)
+        insert into foods(fid,fname,fnum)
         values(#{fid},#{fname},#{fnum})
     </insert>
 
 
 
     <delete id="deleteFoodsById" parameterType="java.lang.Integer">
-        delete from Foods
-        where Fid = #{id}
+        delete from foods
+        where fid = #{id}
     </delete>
 
     <update id="updateFoodsById" parameterType="com.javaweb_week.salefood.entity.Foods">
-        update Foods set
-             Fname=#{fname}
-            ,Fnum=#{fnum}
-        where Fid=#{fid}
+        update foods set
+             fname=#{fname}
+            ,fnum=#{fnum}
+        where fid=#{fid}
     </update>
 
 
