@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>订单记录</title>
-
+    <link type="text/css" rel="stylesheet" th:href="@{/css/dingdan.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>订单记录</h1>
+    </div>
 <table>
     <tr>
         <td>订单号</td>
@@ -14,6 +18,7 @@
         <td>支付状态</td>
     </tr>
     <span th:each="order,orderStat:${orders}">
+
     <tr>
         <td th:text="${order.getOid()}"></td>
         <td th:text="${order.getOyear()}+'年'+${order.getOmonth()}+'月'+${order.getOday()}+'日'"></td>
@@ -32,5 +37,6 @@
     </span>
 </table>
 <a th:href="@{/student-buycar}">购物车</a>
+</div>
 </body>
 </html>
