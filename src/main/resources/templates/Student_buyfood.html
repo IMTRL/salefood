@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
     <title>订餐</title>
+    <script type="text/javascript" th:src="@{js/buyfood.js}"></script>
 </head>
 <body>
-
+<span th:each="CZ:${cz}">
+    <a th:text="${CZ.getFname()}"></a>
+</span>
+<ul style="list-style-type:none">
+<span th:each="CP:${cp}">
+    <a><li th:text="${CP.getMname()}"></li></a>
+</span>
+</ul>
 </body>
 </html>

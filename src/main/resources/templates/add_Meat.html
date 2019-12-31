@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>添加菜品</title>
 </head>
 <body>
-<form action="add_Meat" method="post">
+<form action="add_Meat" enctype="multipart/form-data" method="post">
     菜组分类 <select name="Meatid">
     <option value="1">荤菜类</option>
     <option value="2">素菜类</option>
@@ -14,7 +14,7 @@
     菜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名<input type="text" name="Mname"/><br>
     口&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;味<input type="text" name="Mstyle"/><br>
     价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格<input type="text" name="Mprice"/><br>
-    图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片<input type="text" name="Mpicture"/><br>
+    图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片<input type="file" name="Mpicture" accept="image/*"/><br>
     <input type="submit" value="添加"/>
 </form>
 <br><a href="/get_Foods">返回上级页面</a>

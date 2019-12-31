@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>学生功能页面</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/stu.css}">
 </head>
 <body>
-<a th:href="@{/student-orderlist/(userId=${session.userId})}">订单记录</a>
-<a th:href="@{/student-buyfood/(userId=${session.userId})}">开始订餐</a>
-<a th:href="@{/student-info/(userId=${session.userId})}">管理账号</a>
+<div class="logo">
+    <div class="logo1">
+        <h1>
+            选择功能
+        </h1>
+        <img th:src="@{/images/19.gif}" width="130px" height="130px">
+    </div>
+
+    <div class="logo4">
+        <a th:href="@{/student-buyfood}">开始订餐</a><br>
+<a th:href="@{/student-orderlist}">订单记录</a><br>
+<a th:href="@{/student-info}">管理账号</a>
+    </div>
+</div>
 </body>
 </html>

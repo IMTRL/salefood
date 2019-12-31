@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface MeatRepository extends JpaRepository<MeatB,Integer> {
     List<MeatB>findMeatBByMid(int mid);
+    List<MeatB>findMeatBByMeatid(int meatid);
 }

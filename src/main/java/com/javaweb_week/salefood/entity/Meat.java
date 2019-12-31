@@ -1,21 +1,27 @@
 package com.javaweb_week.salefood.entity;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Meat {
     private Integer mid;
     private Integer meatid;
     private String mname;
     private String mstyle;
     private Double mprice;
+    private Double mscore;
     private String mpicture;
     public Meat() {
         super();
     }
-    public Meat(Integer mid,Integer meatid,String mname,String mstyle,Double mprice,String mpicture) {
+    public Meat(Integer mid,Integer meatid,String mname,String mstyle,Double mprice,Double mscore,String mpicture) {
         super();
         this.mid = mid;
         this.meatid = meatid;
         this.mname = mname;
         this.mstyle = mstyle;
         this.mprice = mprice;
+        this.mscore=mscore;
         this.mpicture = mpicture;
     }
     public Integer getMid() {
@@ -66,4 +72,11 @@ public class Meat {
         this.mpicture = mpicture;
     }
 
+    public Double getMscore() {
+        return this.mscore;
+    }
+
+    public void setMscore(Double mscore) {
+        this.mscore = mscore;
+    }
 }

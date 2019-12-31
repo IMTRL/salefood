@@ -1,10 +1,10 @@
 package com.javaweb_week.salefood.entity;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Service
+@Component
 @Entity
 @Table(name = "meat")
 public class MeatB {

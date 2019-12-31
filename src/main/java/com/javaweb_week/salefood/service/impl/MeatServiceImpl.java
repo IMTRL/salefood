@@ -11,10 +11,6 @@ public class MeatServiceImpl implements MeatService{
     @Autowired
     private MeatDao meatDao;
 
-    @Override
-    public long getMeatRowCount() {
-        return 0;
-    }
 
     @Override
     public List<Meat> selectMeat(Integer Fid){

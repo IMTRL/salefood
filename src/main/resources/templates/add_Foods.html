@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>添加菜组</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/addc.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>菜组添加</h1>
+    </div>
+
 <form action="add_Foods" method="post">
+    <div class="logo2">
     菜组编号<input type="text" name="Fid"/><br>
+    </div>
+    <div class="logo2">
     菜组名称<input type="text" name="Fname"/><br>
+    </div>
+    <div class="logo2">
     菜品数量<input type="text" name="Fnum"/><br>
+    </div>
+    <div class="logo3">
     <input type="submit" value="添加"/>
+    </div>
+    <div class="logo4">
+    <a href="/return_main">返回主页面</a>
+    </div>
 </form>
-<br><a href="/return_main">返回主页面</a>
+
 </body>
 </html>

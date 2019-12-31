@@ -2,16 +2,17 @@ html {
     height: 100%
 }
 body {
-    background: url("../images/11.jpg") 50% 50% repeat;
+    background: url("../images/17.jpg") 50% 50% repeat;
     background-size: cover;
 }
 .logo1
 {
-    width: 150px;
-    height: 104px;
-    margin: 30px  100px 90px 150px ;
+    width: 250px;
+    height: 40px;
+    margin: 40px  20px 20px 150px ;
 
 }
+
 
 .logo {
     position: absolute;
@@ -29,12 +30,12 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 .logo2 input
 {
     width: 360px;
-    height: 48px;
+    height: 38px;
     border: 1px solid;
 
     font-size: 18px;
@@ -47,7 +48,7 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 .logo3 input
 {

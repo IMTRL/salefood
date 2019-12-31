@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>账号管理</title>
-
+    <link type="text/css" rel="stylesheet" th:href="@{/css/zh.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>账号信息</h1>
+    </div>
+    <div class="logo2">
 姓名：<input type="text" th:value="${sinfo.getSname()}" readonly="readonly">
+    </div>
+    <div class="logo2">
 学号：<input type="text" th:value="${sinfo.getSid()}" readonly="readonly">
+    </div>
+    <div class="logo2">
 余额：<input type="text" th:value="${sinfo.getSbalance()}" readonly="readonly">
+    </div>
+    <div class="logo4">
 <a th:href="@{/student-password-update/(userId=${session.userId})}">修改密码</a>
-
+    </div>
+</div>
 </body>
 </html>

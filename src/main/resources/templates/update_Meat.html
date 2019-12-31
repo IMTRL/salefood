@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>修改菜品信息</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/upc.css}">
 </head>
 <body>
-<form action="/update_Meat" method="post">
+<div class="logo">
+    <div class="logo1">
+        <h1>菜品修改</h1>
+    </div>
+<form action="/update_Meat" method="post" enctype="multipart/form-data">
     <input type="hidden" name="Mid" th:value="${meat.mid}" >
+    <div class="logo2">
     菜组编号<input type="text" name="Meatid" th:value="${meat.meatid}" readonly="readonly"/><br>
+    </div>
+    <div class="logo2">
     菜名<input type="text" name="Mname" th:value="${meat.mname}"/><br>
+    </div>
+    <div class="logo2">
     口味<input type="text" name="Mstyle" th:value="${meat.mstyle}"/><br>
+    </div>
+    <div class="logo2">
     价格<input type="text" name="Mprice" th:value="${meat.mprice}"/><br>
-    图片<input type="text" name="Mpicture" th:value="${meat.mpicture}"/><br>
+    </div>
+    <div class="logo2">
+        评分<input type="text" name="Mscore" th:value="${meat.mscore}" readonly="readonly"/><br>
+    </div>
+    <div class="logo2">
+    图片<input type="file" name="Mpicture" /><br>
+    </div>
+    <div class="logo3">
     <input type="submit" value="修改"/>
+    </div>
+<div class="logo4">
+    <a th:href="@{/f_meat/(Fid=${meat.meatid})}">取消修改</a>
+</div>
 </form>
+</div>
 </body>
-<a th:href="@{/f_meat/(Fid=${meat.meatid})}">取消修改</a>
+
 </html>
