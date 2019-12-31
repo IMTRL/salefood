@@ -1,8 +1,6 @@
 package com.javaweb_week.salefood.controller;
 
-import com.javaweb_week.salefood.entity.Orderinfo;
-import com.javaweb_week.salefood.entity.Orders;
-import com.javaweb_week.salefood.entity.Student;
+import com.javaweb_week.salefood.entity.*;
 import com.javaweb_week.salefood.repository.*;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,8 +83,11 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-buyfood")
-    public String studentBuyfood() {
-
+    public String studentBuyfood(Map<String,Object> map) {
+        List<FoodsB>reslutA=foodsRepository.findAll();
+        List<MeatB>reslutB=meatRepository.findAll();
+        map.put("cz",reslutA);
+        map.put("cp",reslutB);
         return "Student_buyfood";
     }
 

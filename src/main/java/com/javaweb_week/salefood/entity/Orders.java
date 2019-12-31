@@ -2,11 +2,11 @@ package com.javaweb_week.salefood.entity;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Service
+@Component
 @Entity
 @Table(name = "orders")
 public class Orders {
