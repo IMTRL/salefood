@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>订餐</title>
-    <script type="text/javascript" th:src="@{js/buyfood.js}"></script>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+
+
+    </script>
 </head>
 <body>
 <span th:each="CZ:${cz}">
-    <a th:text="${CZ.getFname()}"></a>
+    <button th:text="${CZ.fname}" th:onclick="'javascript:changeCZ('+${CZ.fid}+');'"></button>
 </span>
-<ul style="list-style-type:none">
-<span th:each="CP:${cp}">
-    <a><li th:text="${CP.getMname()}"></li></a>
-</span>
-</ul>
+<div id="meatli">
+
+</div>
 </body>
+<script type="text/javascript" th:src="@{js/buyfood.js}"></script>
 </html>
