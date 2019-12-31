@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>修改菜组信息</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/upd.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>菜组修改</h1>
+        <img th:src="@{/images/60.jpg}" width="130px" height="130px">
+    </div>
 <form action="/update_Foods" method="post">
     <input type="hidden" name="Fid" th:value="${foods.fid}" >
+    <div class="logo2">
     菜组名称<input type="text" name="Fname" th:value="${foods.fname}"/><br>
+    </div>
+    <div class="logo2">
     菜品数量<input type="text" name="Fnum" th:value="${foods.fnum}"/><br>
+    </div>
+    <div class="logo3">
     <input type="submit" value="修改"/>
+    </div>
+    <div class="logo4">
+   <a href="/get_Foods">取消修改</a>
+    </div>
 </form>
+</div>
 </body>
-<br><a href="/get_Foods">取消修改</a>
+
 </html>
