@@ -4,31 +4,62 @@
     <meta charset="UTF-8">
     <title>学生注册</title>
     <link type="text/css" rel="stylesheet" th:href="@{/css/zhuce.css}">
+    <script type="text/javascript">
+        function ischina(str) {
+            var reg = /^[\u4E00-\u9FA5]{2,4}$/;
+            return reg.test(str);
+        }
+
+        function isStudentNo(str) {
+            var reg = /^[0-9]{8}$/;
+            return reg.test(str);
+        }
+
+        function isPassword(str) {
+            var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
+            return reg.test(str);
+        }
+
+        function cheak() {
+            var username = document.getElementById("sname").value;
+            var number = document.getElementById("sno").value;
+            var password = document.getElementById("spass").value;
+            if (ischina(username)) {
+                if (isStudentNo(number))
+                    if (isPassword(password))
+                        return true;
+                    else alert("密码为8到16位由数字和字母组成的字符串");
+                else alert("学号为8位数字");
+            } else alert("姓名必须为汉字");
+            return false;
+        }
+    </script>
 </head>
 <body>
 <div class="logo">
     <div class="logo1">
         <h1>学生注册</h1>
     </div>
-<form action="/student-registing" method="post">
-    <div class="logo2">
-    <span>姓名：</span><input type="text" name="name">
-    </div>
-    <div class="logo2">
-    <span>学号：</span><input type="text" name="number">
-    </div>
-    <div class="logo2">
-    <span>密码：</span><input type="text" name="password">
-    </div>
-    <div class="logo3">
-     <input  class="zhuce" type="submit" value="注册">
-        <input    class="chongzhi"  type="reset" value="重置"><br>
-    </div>
-    <div class="logo4">
-    <a href="/student-login">已有账号？</a>
-    </div>
+    <p th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></p>
+    <form action="/student-registing" method="post" onsubmit="return cheak()">
+        <div class="logo2">
+            <span>姓名：</span><input type="text" name="name" id="sname">
+        </div>
+        <div class="logo2">
+            <span>学号：</span><input type="text" name="number" id="sno">
+        </div>
+        <div class="logo2">
+            <span>密码：</span><input type="text" name="password" id="spass">
+        </div>
+        <div class="logo3">
+            <input class="zhuce" type="submit" value="注册">
+            <input class="chongzhi" type="reset" value="重置"><br>
+        </div>
+        <div class="logo4">
+            <a href="/student-login">已有账号？</a>
+        </div>
 
-</form>
+    </form>
 </div>
 
 </body>

@@ -63,13 +63,18 @@ public class ControllerA {
     @RequestMapping("/student-registing")
     public String studentRegisting(@RequestParam("name") String name,
                                    @RequestParam("number") Integer number,
-                                   @RequestParam("password") String password) {
-        if (!StringUtils.isNullOrEmpty(name) && !StringUtils.isNullOrEmpty(password)) {
+                                   @RequestParam("password") String password,
+                                   Map<String,String>map) {
+            List<Student>result=studentRepository.findStudentBySid(number);
+            if (result.size()>0){
+                String msg="存在用户，注册失败!";
+                map.put("msg",msg);
+                return "Student_regist";
+            }
             student = new Student(number, name, password, 0.0);
             studentRepository.saveAndFlush(student);
-        }
 
-        return "Student_regist";
+        return "Student_login";
     }
 
     @RequestMapping("/student-info")
@@ -121,6 +126,8 @@ public class ControllerA {
     @RequestMapping("/student-password-updateing")
     public String studentPasswordupdateing(@RequestParam("newPA") String password,
                                            Map<String, Student> map) {
+        Meat meat=new Meat();
+
         int id = (Integer) (sessionA.getAttribute("userId"));
         studentRepository.updateStudentSpassword(password, id);
         List<Student> result = studentRepository.findStudentBySid(id);
