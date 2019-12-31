@@ -19,7 +19,7 @@ body {
     left: 50%;
     top: 50%;
     width: 430px;
-    height: 550px;
+    height: 600px;
     margin: -300px 0 0 -215px;
     border: 1px solid #ffffff;
     border-radius: 20px;
@@ -35,7 +35,7 @@ body {
 .logo2 input
 {
     width: 360px;
-    height: 38px;
+    height: 28px;
     border: 1px solid;
 
     font-size: 18px;
@@ -53,10 +53,10 @@ body {
 .logo3 input
 {
     width: 360px;
-    height: 48px;
+    height: 38px;
     border: 1px solid;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 28px;
     color: black;
     outline: none;
 }
