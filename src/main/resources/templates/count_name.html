@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>统计</title>
+</head>
+<body>
+请输入需要查询的菜品名：<input type="text"name="caipinname"th:value="${caipnname}"><input type="submit" value="查询">
+<table border="1" >
+    <thead>
+    <tr>
+        <th>菜品编号</th>
+        <th>菜品名</th>
+        <th>本日已销售数量</th>
+        <th>本月已销售总数量</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

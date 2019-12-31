@@ -10,7 +10,7 @@
     <div class="logo1">
         <h1>菜品修改</h1>
     </div>
-<form action="/update_Meat" method="post">
+<form action="/update_Meat" method="post" enctype="multipart/form-data">
     <input type="hidden" name="Mid" th:value="${meat.mid}" >
     <div class="logo2">
     菜组编号<input type="text" name="Meatid" th:value="${meat.meatid}" readonly="readonly"/><br>
@@ -25,7 +25,10 @@
     价格<input type="text" name="Mprice" th:value="${meat.mprice}"/><br>
     </div>
     <div class="logo2">
-    图片<input type="text" name="Mpicture" th:value="${meat.mpicture}"/><br>
+        评分<input type="text" name="Mscore" th:value="${meat.mscore}" readonly="readonly"/><br>
+    </div>
+    <div class="logo2">
+    图片<input type="file" name="Mpicture" /><br>
     </div>
     <div class="logo3">
     <input type="submit" value="修改"/>
