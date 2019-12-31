@@ -7,7 +7,8 @@
         <result column="meat2" property="mname" />
         <result column="meat3" property="mstyle" />
         <result column="meat4" property="mprice" />
-        <result column="meat5" property="mpicture" />
+        <result column="meat5" property="mscore" />
+        <result column="meat6" property="mpicture" />
     </resultMap>
 
     <sql id="Meat_Column">
@@ -16,7 +17,8 @@
         ,meat.mname as meat2
         ,meat.mstyle as meat3
         ,meat.mprice as meat4
-        ,meat.mpicture as meat5
+        ,meat.mscore as meat5
+        ,meat.mpicture as meat6
     </sql>
 
 
@@ -36,8 +38,8 @@
 
 
     <insert id="insertMeat" parameterType="com.javaweb_week.salefood.entity.Meat">
-        insert into meat(mid,meatid,mname,mstyle,mprice,mpicture)
-        values(null,#{meatid},#{mname},#{mstyle},#{mprice},#{mpicture})
+        insert into meat(mid,meatid,mname,mstyle,mprice,mscore,mpicture)
+        values(null,#{meatid},#{mname},#{mstyle},#{mprice},0,#{mpicture})
     </insert>
 
 
@@ -53,6 +55,7 @@
             ,mname=#{mname}
             ,mstyle=#{mstyle}
             ,mprice=#{mprice}
+            ,mscore=#{mscore}
             ,mpicture=#{mpicture}
         where mid=#{mid}
     </update>

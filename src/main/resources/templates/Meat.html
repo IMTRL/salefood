@@ -18,6 +18,7 @@
         <th>菜名</th>
         <th>口味</th>
         <th>价格</th>
+        <th>评分</th>
         <th>图片</th>
         <th>操作</th>
     </tr>
@@ -28,7 +29,8 @@
         <td th:text="${meat.mname}"></td>
         <td th:text="${meat.mstyle}"></td>
         <td th:text="${meat.mprice}"></td>
-        <td th:text="${meat.mpicture}"></td>
+        <td th:text="${meat.mscore}"></td>
+        <td><img  th:src="${meat.mpicture}"> </td>
         <td>
             <a th:href="@{/meat_update/(Mid=${meat.mid})}">修改</a>
             <a th:href="@{/meat_delete/(Mid=${meat.mid})}">删除</a>
