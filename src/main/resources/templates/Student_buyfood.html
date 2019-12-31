@@ -14,9 +14,9 @@
 <span th:each="CZ:${cz}">
     <button th:text="${CZ.fname}" th:onclick="'javascript:changeCZ('+${CZ.fid}+');'"></button>
 </span>
-<div id="meatli">
-
+<div id="foodli">
 </div>
+<div id="meatli"></div>
 </body>
 <script type="text/javascript" th:src="@{js/buyfood.js}"></script>
 </html>
