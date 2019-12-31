@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/00.css}">
 </head>
 <body>
-首页
-<a href="/student-login">学生登录</a>
-<a href="/student-regist">学生注册</a>
-<a href="/RstManager_Login">食堂管理员登录</a>
-<a href="/systemlogin">系统管理员登录</a>
+<div id="Container">
+    <div id="header">
+
+        <span><a href="#">系统首页</a></span>
+        <span>|</span>
+        <span><a href="/student-login">学生登录</a></span>
+        <span>|</span>
+        <span><a href="/student-regist">学生注册</a></span>
+        <span>|</span>
+        <span><a href="/RstManager_Login">食堂管理员登录</a></span>
+        <span>|</span>
+        <span><a href="/systemlogin">系统管理员登录</a></span>
+
+    </div>
+    <div class="main">
+
+        <div id="right">
+            <h3>本店的特色招牌菜 </h3>
+            <img th:src="@{/images/51.jpg}" width="300" height="300" border="0" alt="">
+            <img th:src="@{/images/57.jpg}" width="300" height="300" border="0" alt="">
+            <img th:src="@{/images/55.jpg}" width="300" height="300" border="0" alt="">
+            <img th:src="@{/images/56.jpg}" width="300" height="300" border="0" alt=""><br>
+            <marquee loop="20">
+                <font  face="隶书" size="20" color="black">
+                 首单减十元，还有更多优惠卷可以领哦！
+                </font>
+            </marquee>
+
+        </div>
+    </div>
+4
+</div>
 </body>
 </html>
