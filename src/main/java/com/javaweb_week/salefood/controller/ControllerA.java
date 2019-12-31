@@ -5,8 +5,10 @@ import com.javaweb_week.salefood.repository.*;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,6 +96,12 @@ public class ControllerA {
         map.put("cz",reslutA);
         map.put("cp",reslutB);
         return "Student_buyfood";
+    }
+    @RequestMapping("/changeCZ")
+    @ResponseBody
+    public List<MeatB> changeCZ(@RequestParam("id")int id){
+        List<MeatB>result=meatRepository.findMeatBByMeatid(id);
+        return result;
     }
 
     @RequestMapping("/student-orderlist")
