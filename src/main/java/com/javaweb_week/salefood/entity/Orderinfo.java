@@ -21,6 +21,12 @@ public class Orderinfo {
         this.oid = oid;
         this.onum = onum;
     }
+
+    public Orderinfo(Integer mid, Integer onum) {
+        this.mid = mid;
+        this.onum = onum;
+    }
+
     @Id
     public Integer getMid() {
         return this.mid;

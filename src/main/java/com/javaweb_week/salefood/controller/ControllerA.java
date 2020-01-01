@@ -5,10 +5,7 @@ import com.javaweb_week.salefood.repository.*;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +32,7 @@ public class ControllerA {
     private FoodsRepository foodsRepository;
 
     HttpSession sessionA;
+
 
     @RequestMapping("/student-login")
     public String studentLogin() {
@@ -104,9 +102,27 @@ public class ControllerA {
         return result;
     }
 
+    @RequestMapping("/incar")
+    @ResponseBody
+    public String incar(int mid, int number){
+        if(number==0)
+            return "添加失败，份数为0";
+        MeatB meatb=meatRepository.findMeatBByMid(mid).get(0);
+        Orderinfo orderinfo=new Orderinfo(meatb.getMid(),number);
+        List<Orderinfo>oinfo=new LinkedList<>();
+        if(sessionA.getAttribute("incar")==null)
+            sessionA.setAttribute("incar",oinfo);
+        else {
+            oinfo=(List<Orderinfo>)(sessionA.getAttribute("incar"));
+            oinfo.add(orderinfo);
+        }
+        return "添加"+meatb.getMname()+number+"份成功！";
+    }
+
+
     @RequestMapping("/student-orderlist")
     public String studentOrderlist(Map<String, Object> map) {
-        int id = (Integer) (sessionA.getAttribute("userId"));
+        int id = (Integer)(sessionA.getAttribute("userId"));
         List<Orders> resultA = ordersRepository.findOrdersBySid(id);
         List<Map<String, Integer>> resultB = new LinkedList<>();
         for (Orders orders : resultA) {
