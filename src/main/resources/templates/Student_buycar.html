@@ -19,6 +19,7 @@
     </script>
 </head>
 <body>
+<a href="/cleancar">清空购物车</a>
 <table>
     <tr>
         <td>菜名</td><td>口味</td><td>单价</td><td>数量</td><td>共计</td>
@@ -29,7 +30,7 @@
         <td th:text="${car.mstyle}"></td>
         <td th:text="${car.mprice}"></td>
         <td th:text="${meatnum.get(cartstatue.index)}"></td>
-        <td th:text="${meatnum.get(cartstatue.index)}"></td>
+        <td th:text="${meatnum.get(cartstatue.index)} * ${car.mprice}"></td>
     </tr>
 </span>
 </table>

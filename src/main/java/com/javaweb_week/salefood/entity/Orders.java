@@ -1,7 +1,6 @@
 package com.javaweb_week.salefood.entity;
 
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -17,30 +16,18 @@ public class Orders {
     private Integer oyear;
     private Integer omonth;
     private Integer oday;
-    @Value("0")
-    private boolean opayed;
 
     public Orders() {
         super();
     }
 
-    public Orders(String oid, Integer sid, Double omoney, Integer oyear, Integer omonth, Integer oday, boolean opayed) {
+    public Orders(String oid, Integer sid, Double omoney, Integer oyear, Integer omonth, Integer oday) {
         this.oid = oid;
         this.sid = sid;
         this.omoney = omoney;
         this.oyear = oyear;
         this.omonth = omonth;
         this.oday = oday;
-        this.opayed = opayed;
-    }
-
-    @Column
-    public boolean getOpayed() {
-        return this.opayed;
-    }
-
-    public void setOpayed(boolean opayed) {
-        this.opayed = opayed;
     }
 
     @Id

@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface OrderinfoRepository extends JpaRepository<Orderinfo, OrderinfoMultiKeysClass> {
     List<Orderinfo>findOrderinfoByOid(String oid);
+    List<Orderinfo>findOrderinfoByMid(int mid);
 }

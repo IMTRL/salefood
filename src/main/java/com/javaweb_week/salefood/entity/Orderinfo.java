@@ -12,19 +12,25 @@ public class Orderinfo {
     private Integer mid;
     private String oid;
     private Integer onum;
+    private boolean opingf;
+
+
+
     public Orderinfo() {
         super();
     }
-    public Orderinfo(Integer mid,String oid,Integer onum) {
-        super();
+
+    public Orderinfo(Integer mid, String oid, Integer onum, boolean opingf) {
         this.mid = mid;
         this.oid = oid;
         this.onum = onum;
+        this.opingf = opingf;
     }
 
-    public Orderinfo(Integer mid, Integer onum) {
+    public Orderinfo(Integer mid, Integer onum, boolean opingf) {
         this.mid = mid;
         this.onum = onum;
+        this.opingf = opingf;
     }
 
     @Id
@@ -50,6 +56,14 @@ public class Orderinfo {
 
     public void setOnum(Integer onum) {
         this.onum = onum;
+    }
+    @Column
+    public boolean getOpingf() {
+        return opingf;
+    }
+
+    public void setOpingf(boolean opingf) {
+        this.opingf = opingf;
     }
 
 }

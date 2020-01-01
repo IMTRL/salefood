@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.DecimalFormat;
 import java.util.*;
 
 @Controller
@@ -106,7 +107,7 @@ public class ControllerA {
         if (number == 0)
             return "添加失败，份数为0";
         MeatB meatb = meatRepository.findMeatBByMid(mid).get(0);
-        Orderinfo orderinfo = new Orderinfo(meatb.getMid(), number);
+        Orderinfo orderinfo = new Orderinfo(meatb.getMid(), number, false);
         List<Orderinfo> oinfo = new LinkedList<>();
         if (sessionA.getAttribute("incar") == null) {
             sessionA.setAttribute("incar", oinfo);
@@ -187,10 +188,13 @@ public class ControllerA {
     @RequestMapping("/buy")
     @ResponseBody
     public String buy() {
+        List<Orderinfo> oinfo = new LinkedList<>();
         if (sessionA.getAttribute("incar") == null)
             return "未选菜，下单失败";
-        List<Orderinfo> oinfo = new LinkedList<>();
         oinfo = (List<Orderinfo>) (sessionA.getAttribute("incar"));
+        if (oinfo.size() == 0)
+            return "未选菜，下单失败";
+
         Calendar date = Calendar.getInstance();
         String s = date.getTimeInMillis() + "";
         int year = date.get(Calendar.YEAR);
@@ -205,7 +209,7 @@ public class ControllerA {
             }
         }
         int sid = (Integer) sessionA.getAttribute("userId");
-        Orders orders = new Orders(s, sid, money, year, month, day, false);
+        Orders orders = new Orders(s, sid, money, year, month, day);
         ordersRepository.saveAndFlush(orders);
         for (Orderinfo orderinfo : oinfo) {
             orderinfo.setOid(s);
@@ -228,5 +232,29 @@ public class ControllerA {
     public String outlogin() {
         sessionA.invalidate();
         return "index";
+    }
+
+    @RequestMapping("/pingf")
+    @ResponseBody
+    public String pingf(String oid, double score) {
+        Orderinfo orderinfo = orderinfoRepository.findOrderinfoByOid(oid).get(0);
+        if (orderinfo.getOpingf())
+            return "已经打分过了！";
+        MeatB meatB = meatRepository.findMeatBByMid(orderinfo.getMid()).get(0);
+        List<Orderinfo> result = orderinfoRepository.findOrderinfoByMid(meatB.getMid());
+        double olds = meatB.getMscore();
+        double news = (olds * result.size() + score) / (result.size() + 1);
+        meatB.setMscore(news);
+        meatRepository.saveAndFlush(meatB);
+        orderinfo.setOpingf(true);
+        orderinfoRepository.saveAndFlush(orderinfo);
+        return "感谢打分";
+    }
+
+    @RequestMapping("/cleancar")
+    public String clencar() {
+        if (sessionA.getAttribute("incar") != null)
+            sessionA.removeAttribute("incar");
+        return "Student_buycar";
     }
 }

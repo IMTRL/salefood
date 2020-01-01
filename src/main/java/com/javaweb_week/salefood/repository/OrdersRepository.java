@@ -12,6 +12,5 @@ public interface OrdersRepository extends JpaRepository<Orders, String> {
 
     List<Orders> findOrdersByOyearAndOmonthAndOday(int oyear, int omonth, int oday);
     List<Orders> findOrdersByOyearAndOmonth(int oyear, int omonth);
-    List<Orders> findOrdersByOpayed(boolean opayed);
 
 }

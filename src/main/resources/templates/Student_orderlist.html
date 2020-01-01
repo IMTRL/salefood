@@ -3,40 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>订单记录</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function pingf(oid) {
+            var pfq = document.getElementById("pf")
+            pfq.innerHTML = "";
 
+            var _select = document.createElement("select");
+            _select.setAttribute("id", "select");
+            var firstOption = document.createElement("option");
+            firstOption.value = "1";
+            firstOption.text = "1";
+            _select.appendChild(firstOption);
+            for (i = 2; i <= 10; i++) {
+                var _option = document.createElement("option");
+                _option.value = i;
+                _option.text = i;
+                _select.appendChild(_option);
+            }
+            pfq.appendChild(_select)
+
+
+            var b = document.createElement("button")
+            b.setAttribute("id", oid)
+            var node = document.createTextNode("提交");
+            b.appendChild(node)
+            pfq.appendChild(b)
+            var _button = document.getElementById(oid)
+            _button.onclick = function () {
+                var myselect = document.getElementById("select")
+                var idx = myselect.selectedIndex
+                var score = myselect.options[idx].value
+                var str = {"oid": oid, "score": score}
+                $.ajax({
+                    url: '/pingf',
+                    type: 'post',
+                    data: str,
+                    success: function (res) {
+                        alert(res)
+                        location.reload();
+                    }
+                })
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="logo">
     <div class="logo1">
         <h1>订单记录</h1>
     </div>
-<table>
-    <tr>
-        <td>订单号</td>
-        <td>订单时间</td>
-        <td>订单金额</td>
-        <td>支付状态</td>
-    </tr>
-    <span th:each="order,orderStat:${orders}">
+    <table>
+        <tr>
+            <td>订单号</td>
+            <td>订单时间</td>
+            <td>订单金额</td>
+        </tr>
+        <span th:each="order,orderStat:${orders}">
 
     <tr>
         <td th:text="${order.getOid()}"></td>
         <td th:text="${order.getOyear()}+'年'+${order.getOmonth()}+'月'+${order.getOday()}+'日'"></td>
         <td th:text="${order.getOmoney()}"></td>
-        <td th:if="${order.getOpayed()}" th:text="已评价"></td>
-        <td th:if="not ${order.getOpayed()}" th:text="未评价"></td>
     </tr>
         <tr>
             <td>订餐详情：</td>
         <span th:each="oinfon:${oinfo.get(orderStat.index)}">
-            <span th:each="xx:${oinfon}">
-                <td th:text="${oinfon.getKey()}+'('+${oinfon.getValue()}+'份)'"></td>
-            </span>
+            <td th:each="xx:${oinfon}">
+                <button  th:text="${oinfon.getKey()}+'('+${oinfon.getValue()}+'份)'"
+                        th:onclick="pingf([[${order.getOid()}]])"></button>
+            </td>
         </span>
         </tr>
     </span>
-</table>
-<a th:href="@{/student-buycar}">购物车</a>
+    </table>
+    <div id="pf">
+
+    </div>
+    <a th:href="@{/student-buycar}">购物车</a>
 </div>
 <a th:href="@{/gomain}" th:text="返回"></a>
 <a th:href="@{/outlogin}" th:text="退出登录"></a>
