@@ -2,7 +2,7 @@ html {
     height: 100%
 }
 body {
-    background: url("../images/22.jpg") 50% 50% repeat;
+    background: url("../images/17.jpg") 50% 50% repeat;
     background-size: cover;
 }
 .logo1
@@ -17,11 +17,11 @@ body {
 .logo {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     width: 430px;
-    height: 550px;
+    height: 850px;
     margin: -300px 0 0 -215px;
-    border: 1px solid #ffffff;
+    border: 1px solid #FFFFFF;
     border-radius: 20px;
     overflow: hidden
 }
@@ -32,7 +32,7 @@ body {
     margin: 0 auto;
     padding-bottom: 30px;
 }
-.logo2 input
+.logo2 button
 {
     width: 360px;
     height: 48px;
@@ -48,27 +48,40 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 50px;
+    font-size:20px ;
+    padding-bottom: 20px;
 }
-.logo3 input
+.logo3 button
 {
     width: 360px;
-    height: 48px;
+    height: 28px;
     border: 1px solid;
-    border-radius: 25px;
+
     font-size: 18px;
     color: black;
     outline: none;
+
 }
-.logo4 .t1
+.logo5
+{
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    font-size:20px ;
+    padding-bottom: 20px;
+}
+.logo5 button
+{
+    font-size: 20px;
+}
+.logo3 .zhuce
 {
     float: left;
 }
-.logo4 .t2
+.logo3 .chongzhi
 {
     float: right;
 }
-
 .logo4 a
 {
     font-size: 20px;

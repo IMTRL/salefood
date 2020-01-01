@@ -215,8 +215,11 @@ public class ControllerA {
             orderinfo.setOid(s);
             orderinfoRepository.saveAndFlush(orderinfo);
         }
-
+        Student student=studentRepository.findStudentBySid(sid).get(0);
+        student.setSbalance(student.getSbalance()-money);
+        studentRepository.saveAndFlush(student);
         sessionA.removeAttribute("incar");
+
         return "下单成功！";
 
 

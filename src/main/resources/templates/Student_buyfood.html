@@ -6,15 +6,29 @@
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" th:src="@{js/buyfood.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/d1.css}">
 </head>
 <body>
-<a th:href="@{/gomain}" th:text="返回"></a><a th:href="@{/outlogin}" th:text="退出登录"></a><br>
+<div class="logo">
+    <div class="logo1">
+        <h1>订餐页面</h1>
+    </div>
+    <div class="logo2">
+
 <span th:each="CZ:${cz}">
     <button th:text="${CZ.fname}" th:onclick="'javascript:changeCZ('+${CZ.fid}+');'"></button>
 </span>
-<a th:text="前往购物车" th:href="@{/student-buycar}"></a>
-<div id="foodli">
+    </div>
+    <div id="foodli" class="logo3">
+    </div>
+    <div id="meatli" class="logo5">
+
+    </div>
+    <div class="logo4">
+        <a th:text="前往购物车" th:href="@{/student-buycar}"></a>
+        <a th:href="@{/gomain}" th:text="返回">
+        </a><a th:href="@{/outlogin}" th:text="退出登录"></a><br>
+    </div>
 </div>
-<div id="meatli"></div>
 </body>
 </html>

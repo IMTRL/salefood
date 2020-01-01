@@ -37,10 +37,25 @@ function changeCP(i) {
     document.getElementById("meatli")
         .appendChild(info)
 
-    var img = document.createElement("img");
-    img.setAttribute("src", result[i].mpicture)
+    var pic = document.createElement("img");
+    pic.setAttribute("id","img"+i)
+    pic.setAttribute("src", result[i].mpicture)
     document.getElementById("meatli")
-        .appendChild(img)
+        .appendChild(pic)
+
+    var img=document.getElementById("img"+i)
+    img.setAttribute("width","100 px")
+    img.setAttribute("height","100 px")
+
+
+
+
+
+
+
+
+
+
 
     var jian = document.createElement("button");
     jian.setAttribute("id", "num-jian")

@@ -2,14 +2,14 @@ html {
     height: 100%
 }
 body {
-    background: url("../images/22.jpg") 50% 50% repeat;
+    background: url("../images/17.jpg") 50% 50% repeat;
     background-size: cover;
 }
 .logo1
 {
-    width: 250px;
-    height: 40px;
-    margin: 40px  20px 20px 150px ;
+    width: 150px;
+    height: 104px;
+    margin: 30px  100px 90px 150px ;
 
 }
 
@@ -19,9 +19,9 @@ body {
     left: 50%;
     top: 50%;
     width: 430px;
-    height: 550px;
+    height: 650px;
     margin: -300px 0 0 -215px;
-    border: 1px solid #ffffff;
+    border: 1px solid #FFFFFF;
     border-radius: 20px;
     overflow: hidden
 }
@@ -30,9 +30,9 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 }
-.logo2 input
+.logo2 button
 {
     width: 360px;
     height: 48px;
@@ -41,34 +41,33 @@ body {
     font-size: 18px;
     color: black;
     outline: none;
-
+}
+table
+{
+    width: 360px;
+}
+td
+{
+    font-size: 20px;
+    text-align: center;
 }
 .logo3
 {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 50px;
+    font-size:20px ;
+    padding-bottom: 20px;
 }
-.logo3 input
-{
-    width: 360px;
-    height: 48px;
-    border: 1px solid;
-    border-radius: 25px;
-    font-size: 18px;
-    color: black;
-    outline: none;
-}
-.logo4 .t1
+
+.logo3 .zhuce
 {
     float: left;
 }
-.logo4 .t2
+.logo3 .chongzhi
 {
     float: right;
 }
-
 .logo4 a
 {
     font-size: 20px;
