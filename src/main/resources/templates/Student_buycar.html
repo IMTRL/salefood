@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>购物车</title>
-    <script></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function buy() {
+            $.ajax({
+                url: '/buy',
+                type: 'get',
+                data: null,
+                success: function (res) {
+                    alert(res)
+                    location.reload();
+                }
+            })
+        }
+    </script>
 </head>
 <body>
-
+<table>
+    <tr>
+        <td>菜名</td><td>口味</td><td>单价</td><td>数量</td><td>共计</td>
+    </tr>
+<span th:each="car,cartstatue:${carinfo}">
+    <tr>
+        <td th:text="${car.mname}"></td>
+        <td th:text="${car.mstyle}"></td>
+        <td th:text="${car.mprice}"></td>
+        <td th:text="${meatnum.get(cartstatue.index)}"></td>
+        <td th:text="${meatnum.get(cartstatue.index)}"></td>
+    </tr>
+</span>
+</table>
+<button onclick="buy()">购买</button>
+<a th:href="@{/gomain}" th:text="返回"></a><a th:href="@{/outlogin}" th:text="退出登录"></a>
 </body>
 </html>

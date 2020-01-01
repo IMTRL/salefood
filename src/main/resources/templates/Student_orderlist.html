@@ -23,8 +23,8 @@
         <td th:text="${order.getOid()}"></td>
         <td th:text="${order.getOyear()}+'年'+${order.getOmonth()}+'月'+${order.getOday()}+'日'"></td>
         <td th:text="${order.getOmoney()}"></td>
-        <td th:if="${order.getOpayed()}" th:text="已支付"></td>
-        <td th:if="not ${order.getOpayed()}" th:text="未支付"></td>
+        <td th:if="${order.getOpayed()}" th:text="已评价"></td>
+        <td th:if="not ${order.getOpayed()}" th:text="未评价"></td>
     </tr>
         <tr>
             <td>订餐详情：</td>
@@ -38,5 +38,8 @@
 </table>
 <a th:href="@{/student-buycar}">购物车</a>
 </div>
+<a th:href="@{/gomain}" th:text="返回"></a>
+<a th:href="@{/outlogin}" th:text="退出登录"></a>
+
 </body>
 </html>

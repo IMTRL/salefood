@@ -2,7 +2,6 @@ package com.javaweb_week.salefood.controller;
 
 import com.javaweb_week.salefood.entity.*;
 import com.javaweb_week.salefood.repository.*;
-import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class ControllerA {
@@ -64,15 +60,15 @@ public class ControllerA {
     public String studentRegisting(@RequestParam("name") String name,
                                    @RequestParam("number") Integer number,
                                    @RequestParam("password") String password,
-                                   Map<String,String>map) {
-            List<Student>result=studentRepository.findStudentBySid(number);
-            if (result.size()>0){
-                String msg="存在用户，注册失败!";
-                map.put("msg",msg);
-                return "Student_regist";
-            }
-            student = new Student(number, name, password, 0.0);
-            studentRepository.saveAndFlush(student);
+                                   Map<String, String> map) {
+        List<Student> result = studentRepository.findStudentBySid(number);
+        if (result.size() > 0) {
+            String msg = "存在用户，注册失败!";
+            map.put("msg", msg);
+            return "Student_regist";
+        }
+        student = new Student(number, name, password, 0.0);
+        studentRepository.saveAndFlush(student);
 
         return "Student_login";
     }
@@ -88,41 +84,45 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-buyfood")
-    public String studentBuyfood(Map<String,Object> map) {
-        List<FoodsB>reslutA=foodsRepository.findAll();
-        List<MeatB>reslutB=meatRepository.findAll();
-        map.put("cz",reslutA);
-        map.put("cp",reslutB);
+    public String studentBuyfood(Map<String, Object> map) {
+        List<FoodsB> reslutA = foodsRepository.findAll();
+        List<MeatB> reslutB = meatRepository.findAll();
+        map.put("cz", reslutA);
+        map.put("cp", reslutB);
         return "Student_buyfood";
     }
+
+
     @RequestMapping("/changeCZ")
     @ResponseBody
-    public List<MeatB> changeCZ(@RequestParam("id")int id){
-        List<MeatB>result=meatRepository.findMeatBByMeatid(id);
+    public List<MeatB> changeCZ(@RequestParam("id") int id) {
+        List<MeatB> result = meatRepository.findMeatBByMeatid(id);
         return result;
     }
 
     @RequestMapping("/incar")
     @ResponseBody
-    public String incar(int mid, int number){
-        if(number==0)
+    public String incar(int mid, int number) {
+        if (number == 0)
             return "添加失败，份数为0";
-        MeatB meatb=meatRepository.findMeatBByMid(mid).get(0);
-        Orderinfo orderinfo=new Orderinfo(meatb.getMid(),number);
-        List<Orderinfo>oinfo=new LinkedList<>();
-        if(sessionA.getAttribute("incar")==null)
-            sessionA.setAttribute("incar",oinfo);
-        else {
-            oinfo=(List<Orderinfo>)(sessionA.getAttribute("incar"));
+        MeatB meatb = meatRepository.findMeatBByMid(mid).get(0);
+        Orderinfo orderinfo = new Orderinfo(meatb.getMid(), number);
+        List<Orderinfo> oinfo = new LinkedList<>();
+        if (sessionA.getAttribute("incar") == null) {
+            sessionA.setAttribute("incar", oinfo);
+            oinfo = (List<Orderinfo>) (sessionA.getAttribute("incar"));
+            oinfo.add(orderinfo);
+        } else {
+            oinfo = (List<Orderinfo>) (sessionA.getAttribute("incar"));
             oinfo.add(orderinfo);
         }
-        return "添加"+meatb.getMname()+number+"份成功！";
+        return "添加" + meatb.getMname() + number + "份成功！";
     }
 
 
     @RequestMapping("/student-orderlist")
     public String studentOrderlist(Map<String, Object> map) {
-        int id = (Integer)(sessionA.getAttribute("userId"));
+        int id = (Integer) (sessionA.getAttribute("userId"));
         List<Orders> resultA = ordersRepository.findOrdersBySid(id);
         List<Map<String, Integer>> resultB = new LinkedList<>();
         for (Orders orders : resultA) {
@@ -150,7 +150,7 @@ public class ControllerA {
     @RequestMapping("/student-password-updateing")
     public String studentPasswordupdateing(@RequestParam("newPA") String password,
                                            Map<String, Student> map) {
-        Meat meat=new Meat();
+        Meat meat = new Meat();
 
         int id = (Integer) (sessionA.getAttribute("userId"));
         studentRepository.updateStudentSpassword(password, id);
@@ -160,7 +160,75 @@ public class ControllerA {
     }
 
     @RequestMapping("/student-buycar")
-    public String studentbuycar() {
+    public String studentbuycar(Map<String, Object> map) {
+        List<Orderinfo> oinfo = new LinkedList<>();
+        if (sessionA.getAttribute("incar") == null)
+            sessionA.setAttribute("incar", oinfo);
+        oinfo = (List<Orderinfo>) (sessionA.getAttribute("incar"));
+        for (int i = 0; i < oinfo.size(); i++) {
+            for (int j = i + 1; j < oinfo.size(); j++) {
+                if (oinfo.get(i).getMid() == oinfo.get(j).getMid()) {
+                    oinfo.get(i).setOnum(oinfo.get(i).getOnum() + oinfo.get(j).getOnum());
+                    oinfo.remove(j);
+                }
+            }
+        }
+        List<MeatB> meatBS = new LinkedList<>();
+        List<Integer> nums = new LinkedList<>();
+        for (Orderinfo orderinfo : oinfo) {
+            meatBS.add(meatRepository.findMeatBByMid(orderinfo.getMid()).get(0));
+            nums.add(orderinfo.getOnum());
+        }
+        map.put("carinfo", meatBS);
+        map.put("meatnum", nums);
         return "Student_buycar";
+    }
+
+    @RequestMapping("/buy")
+    @ResponseBody
+    public String buy() {
+        if (sessionA.getAttribute("incar") == null)
+            return "未选菜，下单失败";
+        List<Orderinfo> oinfo = new LinkedList<>();
+        oinfo = (List<Orderinfo>) (sessionA.getAttribute("incar"));
+        Calendar date = Calendar.getInstance();
+        String s = date.getTimeInMillis() + "";
+        int year = date.get(Calendar.YEAR);
+        int month = (date.get(Calendar.MONTH) + 1);
+        int day = date.get(Calendar.DAY_OF_MONTH);
+        double money = 0;
+        for (Orderinfo orderinfo : oinfo) {
+            money += orderinfo.getOnum() * (meatRepository.findMeatBByMid(orderinfo.getMid()).get(0).getMprice());
+            if (money > studentRepository.findStudentBySid((Integer) sessionA.getAttribute("userId"))
+                    .get(0).getSbalance()) {
+                return "余额不足！下单失败";
+            }
+        }
+        int sid = (Integer) sessionA.getAttribute("userId");
+        Orders orders = new Orders(s, sid, money, year, month, day, false);
+        ordersRepository.saveAndFlush(orders);
+        for (Orderinfo orderinfo : oinfo) {
+            orderinfo.setOid(s);
+            orderinfoRepository.saveAndFlush(orderinfo);
+        }
+
+        sessionA.removeAttribute("incar");
+        return "下单成功！";
+
+
+    }
+
+    @RequestMapping("/gomain")
+    public String gomain() {
+
+        return "Student_function";
+    }
+
+    @RequestMapping("/outlogin")
+    public String outlogin() {
+        if (sessionA.getAttribute("incar")!=null)
+            sessionA.removeAttribute("incar");
+       sessionA.removeAttribute("userId");
+        return "index";
     }
 }
