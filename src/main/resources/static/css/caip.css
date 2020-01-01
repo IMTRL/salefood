@@ -8,17 +8,22 @@ body {
 .logo1
 {
     width: 150px;
-    height: 104px;
-    margin: 30px  100px 90px 150px ;
+    height: 38px;
+    margin: 30px  100px 40px 350px ;
 
 }
-
+img
+{
+    width: 50px;
+    height: 50px;
+}
 .logo {
     position: absolute;
-    left: 50%;
+    left: 35%;
+
     top: 50%;
-    width: 430px;
-    height: 550px;
+    width: 860px;
+    height: 1000px;
     margin: -300px 0 0 -215px;
     border: 1px solid black;
     border-radius: 20px;
@@ -27,21 +32,28 @@ body {
 .logo2
 {
     position: relative;
-    width: 360px;
+    width: 800px;
     margin: 0 auto;
     padding-bottom: 30px;
+}
+
+.logo2 table
+{
+    width: 800px;
+    color: black;
+    outline: none;
+
 }
 th
 {
 
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
 }
 td
 {
     text-align: center;
 }
-
 .logo3
 {
     position: relative;
@@ -49,7 +61,16 @@ td
     margin: 0 auto;
     padding-bottom: 30px;
 }
-
+.logo3 input
+{
+    width: 360px;
+    height: 48px;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 18px;
+    color: black;
+    outline: none;
+}
 .logo4 .t1
 {
     float: left;

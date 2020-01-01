@@ -19,9 +19,9 @@ body {
     left: 50%;
     top: 50%;
     width: 430px;
-    height: 550px;
+    height: 600px;
     margin: -300px 0 0 -215px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffffff;
     border-radius: 20px;
     overflow: hidden
 }
@@ -30,12 +30,32 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
+}
+.logo2 select
+{
+    width: 100px;
+    height: 38px;
+    border: 1px solid;
+
+    font-size: 18px;
+    color: black;
+    outline: none;
+}
+.logo2 input.tu
+{
+    width: 360px;
+    height: 28px;
+    border: 1px solid;
+
+    font-size: 18px;
+    color: black;
+    outline: none;
 }
 .logo2 input
 {
     width: 360px;
-    height: 48px;
+    height: 38px;
     border: 1px solid;
 
     font-size: 18px;
@@ -48,26 +68,19 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 .logo3 input
 {
-    width: 150px;
-    height: 48px;
+    width: 360px;
+    height: 45px;
     border: 1px solid;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 28px;
     color: black;
     outline: none;
 }
-.logo3 .zhuce
-{
-    float: left;
-}
-.logo3 .chongzhi
-{
-    float: right;
-}
+
 .logo4 a
 {
     font-size: 20px;

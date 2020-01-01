@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>添加菜品</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/addm.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+     <h1>
+         添加菜品
+     </h1>
+    </div>
+
 <form action="add_Meat" enctype="multipart/form-data" method="post">
+    <div class="logo2">
     菜组分类 <select name="Meatid">
     <option value="1">荤菜类</option>
     <option value="2">素菜类</option>
     <option value="3">凉菜类</option>
 </select><br>
+    </div>
+    <div class="logo2">
     菜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名<input type="text" name="Mname"/><br>
+    </div>
+        <div class="logo2">
     口&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;味<input type="text" name="Mstyle"/><br>
+        </div>
+    <div class="logo2">
     价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格<input type="text" name="Mprice"/><br>
-    图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片<input type="file" name="Mpicture" accept="image/*"/><br>
+    </div>
+        <div class="logo2">
+    图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片<input  class="tu" type="file" name="Mpicture" accept="image/*"/><br>
+        </div>
+    <div class="logo3">
     <input type="submit" value="添加"/>
+
+    </div>
+    <div class="logo4">
+    <br><a href="/get_Foods">返回上级页面</a>
+    </div>
 </form>
-<br><a href="/get_Foods">返回上级页面</a>
+</div>
 </body>
 </html>
