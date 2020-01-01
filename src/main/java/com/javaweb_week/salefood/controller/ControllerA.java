@@ -226,9 +226,7 @@ public class ControllerA {
 
     @RequestMapping("/outlogin")
     public String outlogin() {
-        if (sessionA.getAttribute("incar")!=null)
-            sessionA.removeAttribute("incar");
-       sessionA.removeAttribute("userId");
+        sessionA.invalidate();
         return "index";
     }
 }

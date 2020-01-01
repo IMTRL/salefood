@@ -152,7 +152,7 @@ public class ControllerB {
             e.printStackTrace();
             return "上传失败";
         }
-        Meat meat = new Meat(0, Meatid, Mname, Mstyle, Mprice, 0.0, picture);
+        Meat meat = new Meat(0, Meatid, Mname, Mstyle, Mprice, 10.0, picture);
         meat.setMpicture("/img/" + fileName);
         meatService.insertMeat(meat);
         return "RstManager_main";
