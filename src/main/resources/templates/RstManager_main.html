@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>食堂管理员后台页面</title>
 </head>
 <body>
 这里是食堂管理员后台功能页面！！<br>
+<p th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></p>
 <a href="/get_Foods">菜组信息</a>
 </body>
 </html>

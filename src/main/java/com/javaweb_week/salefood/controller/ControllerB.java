@@ -2,7 +2,9 @@ package com.javaweb_week.salefood.controller;
 
 import com.javaweb_week.salefood.entity.Foods;
 import com.javaweb_week.salefood.entity.Meat;
+import com.javaweb_week.salefood.entity.MeatB;
 import com.javaweb_week.salefood.entity.Rstmanager;
+import com.javaweb_week.salefood.repository.MeatRepository;
 import com.javaweb_week.salefood.service.FoodsService;
 import com.javaweb_week.salefood.service.MeatService;
 import com.javaweb_week.salefood.service.RstmanagerService;
@@ -31,6 +33,9 @@ public class ControllerB {
     private FoodsService foodsService;
     @Autowired
     private MeatService meatService;
+
+    @Autowired
+    private MeatRepository meatRepository;
 
     //localhost：8080/RstManager_Login
     //食堂管理员登录
@@ -119,25 +124,36 @@ public class ControllerB {
                           @RequestParam("Mname") String Mname,
                           @RequestParam("Mstyle") String Mstyle,
                           @RequestParam("Mprice") Double Mprice,
-                          @RequestParam("Mpicture") MultipartFile Mpicture) {
+                          @RequestParam("Mpicture") MultipartFile Mpicture,
+                          Map<String, String> map) {
+        String msg;
+        List<MeatB> re = meatRepository.findMeatBByMname(Mname);
         if (Mpicture.isEmpty()) {
-            return "图片不能为空!";
+            msg = "图片不能为空!";
+            map.put("msg", msg);
+            return "RstManager_main";
+        } else if (re.size() != 0) {
+            msg = "存在同名菜品！！";
+            map.put("msg", msg);
+            return "RstManager_main";
         }
+
+
         String fileName = Mpicture.getOriginalFilename();
         String filepath = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
-        File dest = new File(filepath+fileName);
+        File dest = new File(filepath + fileName);
         String picture;
         try {
             Mpicture.transferTo(dest);
-            picture =  filepath +fileName;
-       //     logger.info("上传成功");
+            picture = filepath + fileName;
+            //     logger.info("上传成功");
         } catch (IOException e) {
-    //        logger.error("上传失败");
+            //        logger.error("上传失败");
             e.printStackTrace();
             return "上传失败";
         }
-        Meat meat = new Meat(0, Meatid, Mname, Mstyle, Mprice,0.0, picture);
-        meat.setMpicture("/img/"+fileName);
+        Meat meat = new Meat(0, Meatid, Mname, Mstyle, Mprice, 0.0, picture);
+        meat.setMpicture("/img/" + fileName);
         meatService.insertMeat(meat);
         return "RstManager_main";
     }
@@ -150,6 +166,7 @@ public class ControllerB {
         model.addAttribute("meat", meat);
         return "update_Meat";//进入修改页面
     }
+
     //实际的修改
     @PostMapping(value = "/update_Meat")
     public String updateMeat(@RequestParam("Mid") Integer Mid,
@@ -158,25 +175,34 @@ public class ControllerB {
                              @RequestParam("Mstyle") String Mstyle,
                              @RequestParam("Mprice") Double Mprice,
                              @RequestParam("Mscore") Double Mscore,
-                             @RequestParam("Mpicture") MultipartFile Mpicture) {
+                             @RequestParam("Mpicture") MultipartFile Mpicture,
+                             Map<String,String>map) {
+        String msg;
+        List<MeatB> re = meatRepository.findMeatBByMname(Mname);
         if (Mpicture.isEmpty()) {
-            return "图片不能为空!";
+            msg = "图片不能为空!";
+            map.put("msg", msg);
+            return "RstManager_main";
+        } else if (re.size() != 0) {
+            msg = "存在同名菜品！！";
+            map.put("msg", msg);
+            return "RstManager_main";
         }
         String fileName1 = Mpicture.getOriginalFilename();
         String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
-        File dest = new File(filepath1+fileName1);
+        File dest = new File(filepath1 + fileName1);
         String update_picture;
         try {
             Mpicture.transferTo(dest);
-            update_picture =  filepath1 +fileName1;
+            update_picture = filepath1 + fileName1;
             //     logger.info("上传成功");
         } catch (IOException e) {
             //        logger.error("上传失败");
             e.printStackTrace();
             return "上传失败";
         }
-        Meat meat = new Meat(Mid,Meatid, Mname, Mstyle, Mprice, Mscore,update_picture);
-        meat.setMpicture("/img/"+fileName1);
+        Meat meat = new Meat(Mid, Meatid, Mname, Mstyle, Mprice, Mscore, update_picture);
+        meat.setMpicture("/img/" + fileName1);
         meatService.updateMeatById(meat);
         return "RstManager_main";
     }
