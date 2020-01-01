@@ -13,19 +13,22 @@ public class MeatB {
     private String mname;
     private String mstyle;
     private Double mprice;
+    private Double mscore;
     private String mpicture;
 
     public MeatB() {
         super();
     }
 
-    public MeatB(Integer mid, Integer meatid, String mname, String mstyle, Double mprice, String mpicture) {
-        super();
+
+
+    public MeatB(Integer mid, Integer meatid, String mname, String mstyle, Double mprice, Double mscore, String mpicture) {
         this.mid = mid;
         this.meatid = meatid;
         this.mname = mname;
         this.mstyle = mstyle;
         this.mprice = mprice;
+        this.mscore = mscore;
         this.mpicture = mpicture;
     }
 
@@ -77,6 +80,15 @@ public class MeatB {
 
     public void setMpicture(String mpicture) {
         this.mpicture = mpicture;
+    }
+
+   @Column
+    public Double getMscore() {
+        return mscore;
+    }
+
+    public void setMscore(Double mscore) {
+        this.mscore = mscore;
     }
 
 }
