@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.OrdersBDao">
+    <resultMap id="result_OrdersB_Map" type="com.javaweb_week.salefood.entity.OrdersB">
+        <id column="OrdersB0" property="oid" />
+        <result column="OrdersB1" property="sid" />
+        <result column="OrdersB2" property="omoney" />
+        <result column="OrdersB3" property="oyear" />
+        <result column="OrdersB4" property="omonth" />
+        <result column="OrdersB5" property="oday" />
+    </resultMap>
+
+    <sql id="orders_Column">
+        orders.oid as OrdersB0
+        ,orders.sid as OrdersB1
+        ,orders.omoney as OrdersB2
+        ,orders.oyear as OrdersB3
+        ,orders.omonth as OrdersB4
+        ,orders.oday as OrdersB5
+    </sql>
+
+    <select id="getOrdersBRowCount" resultType="java.lang.Long">
+        select count(oid) from orders
+    </select>
+    <select id="selectOrdersB" resultMap="result_OrdersB_Map">
+        select 
+        <include refid="orders_Column" /> 
+        from orders
+    </select> 
+
+    <select id="selectOrdersBById" parameterType="java.lang.String" resultMap="result_OrdersB_Map">
+        select 
+            <include refid="orders_Column" /> 
+        from orders
+        where orders.oid = #{id}
+    </select>
+
+    <insert id="insertOrdersB" parameterType="com.javaweb_week.salefood.entity.OrdersB">
+        insert into orders(oid,sid,omoney,oyear,omonth,oday) 
+        values(#{oid},#{sid},#{omoney},#{oyear},#{omonth},#{oday})
+    </insert>
+
+
+    <delete id="deleteOrdersBById" parameterType="java.lang.String">
+        delete from orders
+        where oid = #{id}
+    </delete>
+
+    <update id="updateOrdersBById" parameterType="com.javaweb_week.salefood.entity.OrdersB">
+        update orders set
+            sid=#{sid}
+            ,omoney=#{omoney}
+            ,oyear=#{oyear}
+            ,omonth=#{omonth}
+            ,oday=#{oday}
+        where oid=#{oid}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.OrderinfoBDao">
+    <resultMap id="result_OrderinfoB_Map" type="com.javaweb_week.salefood.entity.OrderinfoB">
+        <id column="OrderinfoB0" property="mid" />
+        <result column="OrderinfoB1" property="oid" />
+        <result column="OrderinfoB2" property="onum" />
+        <result column="OrderinfoB3" property="opingf" />
+    </resultMap>
+
+    <sql id="orderinfo_Column">
+        orderinfo.mid as OrderinfoB0
+        ,orderinfo.oid as OrderinfoB1
+        ,orderinfo.onum as OrderinfoB2
+        ,orderinfo.opingf as OrderinfoB3
+    </sql>
+
+    <select id="getOrderinfoBRowCount" resultType="java.lang.Long">
+        select count(mid) from orderinfo
+    </select>
+    <select id="selectOrderinfoB" resultMap="result_OrderinfoB_Map">
+        select 
+        <include refid="orderinfo_Column" /> 
+        from orderinfo
+    </select> 
+
+    <select id="selectOrderinfoBById" parameterType="java.lang.Integer" resultMap="result_OrderinfoB_Map">
+        select 
+            <include refid="orderinfo_Column" /> 
+        from orderinfo
+        where orderinfo.mid = #{id}
+    </select> 
+
+
+    <insert id="insertOrderinfoB" parameterType="com.javaweb_week.salefood.entity.OrderinfoB">
+        insert into orderinfo(mid,oid,onum,opingf) 
+        values(#{mid},#{oid},#{onum},#{opingf})
+    </insert>
+
+
+
+    <delete id="deleteOrderinfoBById" parameterType="java.lang.Integer">
+        delete from orderinfo
+        where mid = #{id}
+    </delete>
+
+    <update id="updateOrderinfoBById" parameterType="com.javaweb_week.salefood.entity.OrderinfoB">
+        update orderinfo set
+            oid=#{oid}
+            ,onum=#{onum}
+            ,opingf=#{opingf}
+        where mid=#{mid}
+    </update>
+
+
+</mapper>

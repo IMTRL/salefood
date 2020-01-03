@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.MeatCDao">
+    <resultMap id="result_MeatC_Map" type="com.javaweb_week.salefood.entity.MeatC">
+        <id column="MeatC0" property="mid" />
+        <result column="MeatC1" property="meatid" />
+        <result column="MeatC2" property="mname" />
+        <result column="MeatC3" property="mstyle" />
+        <result column="MeatC4" property="mprice" />
+        <result column="MeatC5" property="mscore" />
+        <result column="MeatC6" property="mpicture" />
+    </resultMap>
+
+    <sql id="meat_Column">
+        meat.mid as MeatC0
+        ,meat.meatid as MeatC1
+        ,meat.mname as MeatC2
+        ,meat.mstyle as MeatC3
+        ,meat.mprice as MeatC4
+        ,meat.mscore as MeatC5
+        ,meat.mpicture as MeatC6
+    </sql>
+
+    <select id="getMeatCRowCount" resultType="java.lang.Long">
+        select count(mid) from meat
+    </select>
+    <select id="selectMeatC" resultMap="result_MeatC_Map">
+        select 
+        <include refid="meat_Column" /> 
+        from meat
+    </select> 
+
+    <select id="selectMeatCById" parameterType="java.lang.Integer" resultMap="result_MeatC_Map">
+        select 
+            <include refid="meat_Column" /> 
+        from meat
+        where meat.mid = #{id}
+    </select>
+
+    <select id="selectMeatCByName" parameterType="java.lang.String" resultType="com.javaweb_week.salefood.entity.MeatC">
+        select
+        <include refid="meat_Column" />
+        from meat
+        where meat.mname = #{mname}
+    </select>
+
+
+    <insert id="insertMeatC" parameterType="com.javaweb_week.salefood.entity.MeatC">
+        insert into meat(mid,meatid,mname,mstyle,mprice,mscore,mpicture) 
+        values(#{mid},#{meatid},#{mname},#{mstyle},#{mprice},#{mscore},#{mpicture})
+    </insert>
+
+
+
+    <delete id="deleteMeatCById" parameterType="java.lang.Integer">
+        delete from meat
+        where mid = #{id}
+    </delete>
+
+    <update id="updateMeatCById" parameterType="com.javaweb_week.salefood.entity.MeatC">
+        update meat set
+            meatid=#{meatid}
+            ,mname=#{mname}
+            ,mstyle=#{mstyle}
+            ,mprice=#{mprice}
+            ,mscore=#{mscore}
+            ,mpicture=#{mpicture}
+        where mid=#{mid}
+    </update>
+
+
+
+</mapper>
