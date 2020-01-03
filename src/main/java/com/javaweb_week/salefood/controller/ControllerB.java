@@ -136,6 +136,8 @@ public class ControllerB {
             msg = "存在同名菜品！！";
             map.put("msg", msg);
             return "RstManager_main";
+
+
         }
 
 
@@ -176,7 +178,7 @@ public class ControllerB {
                              @RequestParam("Mprice") Double Mprice,
                              @RequestParam("Mscore") Double Mscore,
                              @RequestParam("Mpicture") MultipartFile Mpicture,
-                             Map<String,String>map) {
+                             Map<String, String> map) {
         String msg;
         List<MeatB> re = meatRepository.findMeatBByMname(Mname);
         if (Mpicture.isEmpty()) {
@@ -211,7 +213,7 @@ public class ControllerB {
     //Meat表，删除完成后 需要重新获取删除后的新的数据，再显示
     @RequestMapping("/meat_delete")
     public String deleteMeat(Integer Mid) {
-        meatService.deleteMeatById(Mid);
+        meatService.selectMeatById(Mid);
         return "RstManager_main";
     }
 }

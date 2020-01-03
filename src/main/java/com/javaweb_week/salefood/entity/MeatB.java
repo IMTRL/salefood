@@ -21,7 +21,6 @@ public class MeatB {
     }
 
 
-
     public MeatB(Integer mid, Integer meatid, String mname, String mstyle, Double mprice, Double mscore, String mpicture) {
         this.mid = mid;
         this.meatid = meatid;
@@ -49,6 +48,7 @@ public class MeatB {
     public void setMeatid(Integer meatid) {
         this.meatid = meatid;
     }
+
     @Column
     public String getMname() {
         return this.mname;
@@ -57,6 +57,7 @@ public class MeatB {
     public void setMname(String mname) {
         this.mname = mname;
     }
+
     @Column
     public String getMstyle() {
         return this.mstyle;
@@ -65,6 +66,7 @@ public class MeatB {
     public void setMstyle(String mstyle) {
         this.mstyle = mstyle;
     }
+
     @Column
     public Double getMprice() {
         return this.mprice;
@@ -73,6 +75,7 @@ public class MeatB {
     public void setMprice(Double mprice) {
         this.mprice = mprice;
     }
+
     @Column
     public String getMpicture() {
         return this.mpicture;
@@ -82,7 +85,7 @@ public class MeatB {
         this.mpicture = mpicture;
     }
 
-   @Column
+    @Column
     public Double getMscore() {
         return mscore;
     }

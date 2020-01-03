@@ -19,7 +19,7 @@ body {
     left: 50%;
     top: 50%;
     width: 430px;
-    height: 610px;
+    height: 550px;
     margin: -300px 0 0 -215px;
     border: 1px solid #FFFFFF;
     border-radius: 20px;
@@ -48,11 +48,11 @@ body {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 .logo3 input
 {
-    width: 150px;
+    width: 360px;
     height: 48px;
     border: 1px solid;
     border-radius: 25px;
@@ -60,13 +60,12 @@ body {
     color: black;
     outline: none;
 }
-.logo3 .zhuce
+.logo4
 {
-    float: left;
-}
-.logo3 .chongzhi
-{
-    float: right;
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-bottom: 30px;
 }
 .logo4 a
 {

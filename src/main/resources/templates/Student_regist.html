@@ -33,6 +33,21 @@
             } else alert("姓名必须为2到4位汉字");
             return false;
         }
+
+
+        function change(str) {
+            var s=document.getElementById("spass")
+            var b=document.getElementById("bott")
+            if (str == "显示密码") {
+                s.setAttribute("type","text")
+                b.setAttribute("value","隐藏密码")
+            }
+            if (str == "隐藏密码") {
+                s.setAttribute("type","password")
+                b.setAttribute("value","显示密码")
+            }
+
+        }
     </script>
 </head>
 <body>
@@ -49,17 +64,19 @@
             <span>学号：</span><input type="text" name="number" id="sno">
         </div>
         <div class="logo2">
-            <span>密码：</span><input type="text" name="password" id="spass">
+            <span>密码：</span><input type="password" name="password" id="spass">
         </div>
         <div class="logo3">
             <input class="zhuce" type="submit" value="注册">
             <input class="chongzhi" type="reset" value="重置"><br>
         </div>
-        <div class="logo4">
-            <a href="/student-login">已有账号？</a>
-        </div>
-
     </form>
+    <div class="logo3">
+    <input type="button"  value="显示密码" id="bott" onclick="change(this.value)">
+    </div>
+    <div class="logo4">
+        <a href="/student-login">已有账号？</a>
+    </div>
 </div>
 
 </body>

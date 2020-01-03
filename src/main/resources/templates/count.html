@@ -5,12 +5,20 @@
     </script>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link type="text/css" rel="stylesheet" th:href="@{/css/hh.css}">
 
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>统计功能</h1>
+    </div>
 <form action="/Count" method="post">
 </form>
-<a th:href="@{to_count}">按名字查询 </a>
+    <div class="logo4">
+<a th:href="@{/to_count}">按名字查询 </a>
+<a th:href="@{/to_data}">按日期查询</a>
+    </div>
+</div>
 </body>
 </html>

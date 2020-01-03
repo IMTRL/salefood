@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>按日期查询</title>
 
+    <title>统计</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/upd.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>日期查询</h1>
+    </div>
+    <div class="logo2">
+<form action="/serachdate" method="post">
+    需要查询的年月日：
+    <input type="text" name="oyear" th:value="${oyear}">
+    <input type="text" name="omonth"th:value="${omonth}">
+    <input type="text" name="oday"th:value="${oday}">
+    <input type="submit" value="查询">
+</form>
+<table border="1" >
+    <thead>
+    <tr>
+        <th>菜品名</th>
+        <th>年</th>
+        <th>月</th>
+        <th>日</th>
+    </tr>
+    </thead>
+    <tbody>
 
+    <tr th:each="x:${meatname}">
+        <td th:text="${x}"></td>
+        <td th:text="${oyear}"></td>
+        <td th:text="${omonth}"></td>
+        <td th:text="${oday}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+    </div>
+    <div class="logo4">
+<a href="/Count" >返回统计页面</a>
+    </div>
+</div>
 </body>
 </html>
