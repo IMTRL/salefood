@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <script type="text/javascript" src="../static/js/search.js"></script>
+    <script type="text/javascript" >
+    </script>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
 </head>
 <body>
-<form>
-    <input type="button" value="按菜品名称查询" onclick="url()">
-    <input type="button" value="按日期查询" onclick="url2()">
+<form action="/Count" method="post">
 </form>
-<iframe id="name" ></iframe>
+<a th:href="@{/to_count}">按名字查询 </a>
+<a th:href="@{/to_data}">按日期查询</a>
 </body>
 </html>
