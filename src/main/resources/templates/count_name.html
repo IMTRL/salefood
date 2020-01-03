@@ -6,16 +6,34 @@
     <title>统计</title>
 </head>
 <body>
-请输入需要查询的菜品名：<input type="text"name="caipinname"th:value="${caipnname}"><input type="submit" value="查询">
+<form action="/serachcount" method="post">
+请输入需要查询的菜品名：<input type="text"name="mname"th:value="${mname}"><input type="submit" value="查询">
+</form>
 <table border="1" >
     <thead>
     <tr>
         <th>菜品编号</th>
         <th>菜品名</th>
         <th>本日已销售数量</th>
-        <th>本月已销售总数量</th>
+        <th>年</th>
+        <th>月</th>
+        <th>日</th>
     </tr>
     </thead>
+    <tbody>
+
+    <tr >
+        <td th:text="${meatC.mid}"></td>
+        <td th:text="${meatC.mname}"></td>
+        <td th:text="${orderinfoB.onum}"></td>
+        <td th:text="${ordersB.oyear}"></td>
+        <td th:text="${ordersB.omonth}"></td>
+        <td th:text="${ordersB.oday}"></td>
+
+    </tr>
+
+    </tbody>
 </table>
+<a href="/Count" >返回统计页面</a>
 </body>
 </html>
