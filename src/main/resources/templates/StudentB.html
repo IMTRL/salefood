@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/caip.css}">
+</head>
+<body>
+<div class="logo">
+
+    <div class="logo1">
+        <h1>学生信息</h1>
+    </div>
+    <div class="logo2">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>密码</th>
+                <th>余额</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody th:if="${#lists.size(student) > 0}">
+            <tr th:each="student:${student}">
+                <td th:text="${student.sid}"></td>
+                <td th:text="${student.sname}"></td>
+                <td th:text="${student.spassword}"></td>
+                <td th:text="${student.sbalance}"></td>
+                <td>
+                    <a th:href="@{/student_update/(sid=${student.sid})}">还原密码</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
