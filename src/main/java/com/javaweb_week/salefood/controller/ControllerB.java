@@ -150,7 +150,7 @@ public class ControllerB {
             picture = filepath + fileName;
             //     logger.info("上传成功");
         } catch (IOException e) {
-            //        logger.error("上传失败");
+            //     logger.error("上传失败");
             e.printStackTrace();
             return "上传失败";
         }
@@ -191,7 +191,7 @@ public class ControllerB {
             return "RstManager_main";
         }
         String fileName1 = Mpicture.getOriginalFilename();
-        String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
+        String filepath1 = "D:/MeatPictures/";
         File dest = new File(filepath1 + fileName1);
         String update_picture;
         try {
