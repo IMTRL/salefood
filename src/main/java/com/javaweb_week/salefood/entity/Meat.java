@@ -14,16 +14,17 @@ public class Meat {
     public Meat() {
         super();
     }
-    public Meat(Integer mid,Integer meatid,String mname,String mstyle,Double mprice,Double mscore,String mpicture) {
-        super();
+
+    public Meat(Integer mid, Integer meatid, String mname, String mstyle, Double mprice, Double mscore, String mpicture) {
         this.mid = mid;
         this.meatid = meatid;
         this.mname = mname;
         this.mstyle = mstyle;
         this.mprice = mprice;
-        this.mscore=mscore;
+        this.mscore = mscore;
         this.mpicture = mpicture;
     }
+
     public Integer getMid() {
         return this.mid;
     }
@@ -79,4 +80,5 @@ public class Meat {
     public void setMscore(Double mscore) {
         this.mscore = mscore;
     }
+
 }

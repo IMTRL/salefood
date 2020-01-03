@@ -136,6 +136,8 @@ public class ControllerB {
             msg = "存在同名菜品！！";
             map.put("msg", msg);
             return "RstManager_main";
+
+
         }
 
 
@@ -148,7 +150,7 @@ public class ControllerB {
             picture = filepath + fileName;
             //     logger.info("上传成功");
         } catch (IOException e) {
-            //        logger.error("上传失败");
+            //     logger.error("上传失败");
             e.printStackTrace();
             return "上传失败";
         }
@@ -176,7 +178,7 @@ public class ControllerB {
                              @RequestParam("Mprice") Double Mprice,
                              @RequestParam("Mscore") Double Mscore,
                              @RequestParam("Mpicture") MultipartFile Mpicture,
-                             Map<String,String>map) {
+                             Map<String, String> map) {
         String msg;
         List<MeatB> re = meatRepository.findMeatBByMname(Mname);
         if (Mpicture.isEmpty()) {
@@ -189,7 +191,7 @@ public class ControllerB {
             return "RstManager_main";
         }
         String fileName1 = Mpicture.getOriginalFilename();
-        String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
+        String filepath1 = "D:/MeatPictures/";
         File dest = new File(filepath1 + fileName1);
         String update_picture;
         try {
@@ -211,7 +213,7 @@ public class ControllerB {
     //Meat表，删除完成后 需要重新获取删除后的新的数据，再显示
     @RequestMapping("/meat_delete")
     public String deleteMeat(Integer Mid) {
-        meatService.deleteMeatById(Mid);
+        meatService.selectMeatById(Mid);
         return "RstManager_main";
     }
 }
