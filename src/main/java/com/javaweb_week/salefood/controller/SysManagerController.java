@@ -1,16 +1,18 @@
 package com.javaweb_week.salefood.controller;
 
 
-import com.javaweb_week.salefood.entity.Rstmanager;
-import com.javaweb_week.salefood.entity.Sysmanager;
+import com.javaweb_week.salefood.entity.*;
 import com.javaweb_week.salefood.service.RstmanagerService;
+import com.javaweb_week.salefood.service.StudentBService;
 import com.javaweb_week.salefood.service.SysmanagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,8 @@ public class SysManagerController {
 
     @Autowired
     private RstmanagerService rstmanagerService;
+    @Autowired
+    private StudentBService studentBService;
 
     //localhost:8080/SysManager_Login
     @RequestMapping("/SysManager_Login")
@@ -33,6 +37,7 @@ public class SysManagerController {
             return "SysManager_Login";
         }
     }
+
     @RequestMapping("/get_RstManagers")
     public String getRstManager(Map<String, Object> map) {
         List<Rstmanager> rstmanager = rstmanagerService.selectRstmanager();
@@ -53,10 +58,28 @@ public class SysManagerController {
     }
 
 
-
+//删除食堂管理员
     @RequestMapping("/rst_delete")
     public String deleteRstManager(Integer rmid) {
         rstmanagerService.deleteRstmanagerById(rmid);
         return "SysManager_main";
     }
+
+    @RequestMapping("/get_Students")
+    public String getStudent(Map<String, Object> map) {
+        List<StudentB> student = studentBService.selectStudentB();
+        map.put("student", student);
+        return "StudentB";
+    }
+
+    //修改
+    @RequestMapping(value = "student_update", method = RequestMethod.GET)
+    public String updateStudentPre(Integer sid, Model model) {
+        StudentB studentB = studentBService.selectStudentBById(sid);
+        studentB.setSpassword("000000");
+        studentBService.updateStudentBById(studentB);
+        return "SysManager_main";//进入修改页面
+    }
+
+
 }
