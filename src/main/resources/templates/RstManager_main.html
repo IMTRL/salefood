@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>食堂管理员后台页面</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/hh.css}">
 </head>
 <body>
-这里是食堂管理员后台功能页面！！<br>
+<div class="logo">
+    <div class="logo1">
+        <h1>后台功能</h1>
+    </div>
+
+<div class="logo4">
 <p th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></p>
 <a href="/get_Foods">菜组信息</a>
 <a href="/Count">统计</a>
+</div>
+</div>
 </body>
 </html>

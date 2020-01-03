@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
 
     <title>统计</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/upd.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>按名查询</h1>
+        <img th:src="@{/images/60.jpg}" width="130px" height="130px">
+    </div>
+    <div class="logo2">
 <form action="/serachcount" method="post">
 请输入需要查询的菜品名：<input type="text"name="mname"th:value="${mname}"><input type="submit" value="查询">
 </form>
@@ -34,6 +41,10 @@
 
     </tbody>
 </table>
+    </div>
+    <div class="logo4">
 <a href="/Count" >返回统计页面</a>
+    </div>
+</div>
 </body>
 </html>

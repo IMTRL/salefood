@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
 
     <title>统计</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/upd.css}">
 </head>
 <body>
+<div class="logo">
+    <div class="logo1">
+        <h1>日期查询</h1>
+    </div>
+    <div class="logo2">
 <form action="/serachdate" method="post">
     需要查询的年月日：
     <input type="text" name="oyear" th:value="${oyear}">
@@ -34,6 +40,10 @@
 
     </tbody>
 </table>
+    </div>
+    <div class="logo4">
 <a href="/Count" >返回统计页面</a>
+    </div>
+</div>
 </body>
 </html>
