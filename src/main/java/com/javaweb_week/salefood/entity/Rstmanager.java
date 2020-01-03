@@ -1,15 +1,17 @@
 package com.javaweb_week.salefood.entity;
 public class Rstmanager {
     private Integer rmid;
+    private String rmrealname;
     private String rmusername;
     private String rmpassword;
     private Integer rmphone;
     public Rstmanager() {
         super();
     }
-    public Rstmanager(Integer rmid,String rmusername,String rmpassword,Integer rmphone) {
+    public Rstmanager(Integer rmid,String rmrealname,String rmusername,String rmpassword,Integer rmphone) {
         super();
         this.rmid = rmid;
+        this.rmrealname=rmrealname;
         this.rmusername = rmusername;
         this.rmpassword = rmpassword;
         this.rmphone = rmphone;
@@ -22,6 +24,16 @@ public class Rstmanager {
         this.rmid = rmid;
     }
 
+
+    public String getRmrealname() {
+        return this.rmrealname;
+    }
+
+    public void setRmrealname(String rmrealname) {
+        this.rmrealname = rmrealname;
+    }
+
+
     public String getRmusername() {
         return this.rmusername;
     }
@@ -30,6 +42,7 @@ public class Rstmanager {
         this.rmusername = rmusername;
     }
 
+
     public String getRmpassword() {
         return this.rmpassword;
     }
@@ -37,6 +50,7 @@ public class Rstmanager {
     public void setRmpassword(String rmpassword) {
         this.rmpassword = rmpassword;
     }
+
 
     public Integer getRmphone() {
         return this.rmphone;

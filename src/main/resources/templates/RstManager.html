@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>食堂管理员信息</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/caizu.css}">
+</head>
+<body>
+<div class="logo">
+    <div class="logo1">
+        <h1>食堂管理员信息</h1>
+        <img th:src="@{/images/60.jpg}" width="130px" height="130px">
+    </div>
+    <div class="logo2">
+        <table border="2">
+            <thead>
+            <tr>
+                <th>管理员编号</th>
+                <th>真实姓名</th>
+                <th>管理员账号</th>
+                <th>管理员密码</th>
+                <th>电话</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody th:if="${#lists.size(rstmanager) > 0}">
+            <tr th:each="rstmanager:${rstmanager}">
+                <td th:text="${rstmanager.rmid}"></td>
+                <td th:text="${rstmanager.rmrealname}"></td>
+                <td th:text="${rstmanager.rmusername}"></td>
+                <td th:text="${rstmanager.rmpassword}"></td>
+                <td th:text="${rstmanager.rmphone}"></td>
+                <td>
+                    <a th:href="@{/rst_delete/(rmid=${rstmanager.rmid})}">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="logo4">
+        <a class="t1" href="/add_RstManager">添加食堂管理员</a>
+        <a  class="t2" href="/return_main">返回上级页面</a>
+    </div>
+</div>
+</body>
+</html>

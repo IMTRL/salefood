@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加管理员</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/addc.css}">
+</head>
+<body>
+
+
+        <h1>添加管理员</h1>
+
+    <form action="/add_RstManager" method="post">
+
+            管理员编号<input type="text" name="rmid"/><br>
+
+
+            真实姓名<input type="text" name="rmrealname"/><br>
+
+
+            管理员账号<input type="text" name="rmusername"/><br>
+
+
+            密码<input type="text" name="rmpassword"/><br>
+
+
+            电话<input type="text" name="rmphone"/><br>
+
+
+            <input type="submit" value="添加"/>
+
+
+
+
+    </form>
+
+</body>
+</html>

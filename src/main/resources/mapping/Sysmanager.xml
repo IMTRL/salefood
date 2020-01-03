@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaweb_week.salefood.dao.SysmanagerDao">
+    <resultMap id="result_Sysmanager_Map" type="com.javaweb_week.salefood.entity.Sysmanager">
+        <id column="Sysmanager0" property="smid" />
+        <result column="Sysmanager1" property="smrealname" />
+        <result column="Sysmanager2" property="smusername" />
+        <result column="Sysmanager3" property="smpassword" />
+        <result column="Sysmanager4" property="smphone" />
+    </resultMap>
+
+    <sql id="SysManager_Column">
+        SysManager.SMid as Sysmanager0
+        ,SysManager.SMrealname as Sysmanager1
+        ,SysManager.SMusername as Sysmanager2
+        ,SysManager.SMpassword as Sysmanager3
+        ,SysManager.SMphone as Sysmanager4
+    </sql>
+
+    <select id="getSysmanagerRowCount" resultType="java.lang.Long">
+        select count(SMid) from SysManager
+    </select>
+    <select id="selectSysmanager" resultType="com.javaweb_week.salefood.entity.Sysmanager">
+        select 
+        <include refid="SysManager_Column" /> 
+        from SysManager
+    </select> 
+
+    <select id="selectSysmanagerById" parameterType="java.lang.Integer" resultType="com.javaweb_week.salefood.entity.Sysmanager">
+        select 
+            <include refid="SysManager_Column" /> 
+        from SysManager
+        where SysManager.SMid = #{id}
+    </select> 
+
+
+    <insert id="insertSysmanager" parameterType="com.javaweb_week.salefood.entity.Sysmanager">
+        insert into SysManager(SMid,SMrealname,SMusername,SMpassword,SMphone) 
+        values(#{smid},#{smrealname},#{smusername},#{smpassword},#{smphone})
+    </insert>
+
+
+    <delete id="deleteSysmanagerById" parameterType="java.lang.Integer">
+        delete from SysManager
+        where SMid = #{id}
+    </delete>
+
+    <update id="updateSysmanagerById" parameterType="com.javaweb_week.salefood.entity.Sysmanager">
+        update SysManager set
+            SMrealname=#{smrealname}
+            ,SMusername=#{smusername}
+            ,SMpassword=#{smpassword}
+            ,SMphone=#{smphone}
+        where SMid=#{smid}
+    </update>
+
+
+    <!--登录的方法，@Param("smusername")  and #{smusername}   @Param("smpassword")-->
+    <select id="SysManagerLogin" resultType="com.javaweb_week.salefood.entity.Sysmanager">
+        select * from SysManager where SMusername = #{smusername} and SMpassword = #{smpassword}
+    </select>
+
+</mapper>

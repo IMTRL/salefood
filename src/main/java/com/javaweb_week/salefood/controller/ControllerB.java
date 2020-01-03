@@ -189,7 +189,7 @@ public class ControllerB {
             return "RstManager_main";
         }
         String fileName1 = Mpicture.getOriginalFilename();
-        String filepath1 = "D:/MeatPictures/";
+        String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
         File dest = new File(filepath1 + fileName1);
         String update_picture;
         try {
