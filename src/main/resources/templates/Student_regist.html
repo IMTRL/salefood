@@ -6,17 +6,17 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/zhuce.css}">
     <script type="text/javascript">
         function ischina(str) {
-            var reg = /^[\u4E00-\u9FA5]{2,4}$/;
+            var reg = /^[\u4E00-\u9FA5]{2,4}$/;//规定姓名必须为2到4位汉字
             return reg.test(str);
         }
 
         function isStudentNo(str) {
-            var reg = /^[0-9]{8}$/;
+            var reg = /^[0-9]{8}$/;//规定学号为8位数字
             return reg.test(str);
         }
 
         function isPassword(str) {
-            var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+            var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;//规定密码为8到16位由数字和字母组成的字符串
             return reg.test(str);
         }
 
@@ -24,7 +24,7 @@
             var username = document.getElementById("sname").value;
             var number = document.getElementById("sno").value;
             var password = document.getElementById("spass").value;
-            if (ischina(username)) {
+            if (ischina(username)) {//连续调用上面的检查方法，不符合就提示相应信息
                 if (isStudentNo(number))
                     if (isPassword(password))
                         return true;

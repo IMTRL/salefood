@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
-public class ControllerA {
+public class StudentController {
 
     @Autowired
     private Student student;
@@ -37,16 +37,16 @@ public class ControllerA {
 
     @RequestMapping("/student-logining")
     public String studentLogining(@RequestParam("sno") int sno,
-                                  @RequestParam("userpassword") String userpassword,
+                                  @RequestParam("userpassword") String userpassword,//得到页面传过来的账号密码
                                   Map<String, String> map,
                                   HttpServletRequest request) {
-        List<Student> result = studentRepository.findStudentBySidAndSpassword(sno, userpassword);
-        if (result.size() != 0) {
+        List<Student> result = studentRepository.findStudentBySidAndSpassword(sno, userpassword);//得到账号密码符号的数据
+        if (result.size() != 0) {//如果集合长度为0说明没有找到
             sessionA = request.getSession();
-            sessionA.setAttribute("userId", result.get(0).getSid());
-            return "Student_function";
+            sessionA.setAttribute("userId", result.get(0).getSid());//将学生的id放入session方便之后使用
+            return "Student_function";//进入功能页面
         } else {
-            map.put("msg", "用户名或密码错误");
+            map.put("msg", "用户名或密码错误");//带着错误信息返回登录页面
             return "Student_login";
         }
     }
@@ -61,14 +61,14 @@ public class ControllerA {
                                    @RequestParam("number") Integer number,
                                    @RequestParam("password") String password,
                                    Map<String, String> map) {
-        List<Student> result = studentRepository.findStudentBySid(number);
+        List<Student> result = studentRepository.findStudentBySid(number);//查询是否有已经注册的重复学号
         if (result.size() > 0) {
             String msg = "存在用户，注册失败!";
             map.put("msg", msg);
-            return "Student_regist";
+            return "Student_regist";//返回错误信息
         }
         student = new Student(number, name, password, 0.0);
-        studentRepository.saveAndFlush(student);
+        studentRepository.saveAndFlush(student);//将注册信息写入数据库并返回到登录页面
 
         return "Student_login";
     }

@@ -180,9 +180,14 @@ public class RstManagerController {
             map.put("msg", msg);
             return "RstManager_main";
         } else if (re.size() != 0) {
-            msg = "存在同名菜品！！";
-            map.put("msg", msg);
-            return "RstManager_main";
+            for (MeatB meatB : re) {
+                if (meatB.getMid()!=Mid)
+                {
+                    msg = "存在同名菜品！！";
+                    map.put("msg", msg);
+                    return "RstManager_main";
+                }
+            }
         }
         String fileName1 = Mpicture.getOriginalFilename();
         String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
