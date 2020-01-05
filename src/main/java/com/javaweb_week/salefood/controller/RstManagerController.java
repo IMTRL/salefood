@@ -212,7 +212,7 @@ public class RstManagerController {
     //Meat表，删除完成后 需要重新获取删除后的新的数据，再显示
     @RequestMapping("/meat_delete")
     public String deleteMeat(Integer Mid) {
-        meatService.selectMeatById(Mid);
+        meatService.deleteMeatById(Mid);
         return "RstManager_main";
     }
 }
