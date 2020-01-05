@@ -78,7 +78,7 @@ public class SysManagerController {
         StudentB studentB = studentBService.selectStudentBById(sid);
         studentB.setSpassword("000000");
         studentBService.updateStudentBById(studentB);
-        return "SysManager_main";//进入修改页面
+        return "SysManager_main";//
     }
 
 

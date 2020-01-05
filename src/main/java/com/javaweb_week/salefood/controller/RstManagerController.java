@@ -24,11 +24,9 @@ import java.util.logging.Logger;
 
 
 @Controller
-public class ControllerB {
+public class RstManagerController {
 
 
-    @Autowired
-    private RstmanagerService rstmanagerService;
     @Autowired
     private FoodsService foodsService;
     @Autowired
@@ -37,6 +35,8 @@ public class ControllerB {
     @Autowired
     private MeatRepository meatRepository;
 
+    @Autowired
+    private RstmanagerService rstmanagerService;
     //localhost：8080/RstManager_Login
     //食堂管理员登录
     @RequestMapping("/RstManager_Login")//action="RstManager_Login"
@@ -116,7 +116,6 @@ public class ControllerB {
         return "add_Meat";
     }
 
-    //private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ControllerB.class);
 
     //实际完成添加业务
     @PostMapping(value = "/add_Meat")
@@ -136,10 +135,7 @@ public class ControllerB {
             msg = "存在同名菜品！！";
             map.put("msg", msg);
             return "RstManager_main";
-
-
         }
-
 
         String fileName = Mpicture.getOriginalFilename();
         String filepath = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
@@ -148,9 +144,7 @@ public class ControllerB {
         try {
             Mpicture.transferTo(dest);
             picture = filepath + fileName;
-            //     logger.info("上传成功");
         } catch (IOException e) {
-            //     logger.error("上传失败");
             e.printStackTrace();
             return "上传失败";
         }
