@@ -138,7 +138,7 @@ public class RstManagerController {
         }
 
         String fileName = Mpicture.getOriginalFilename();
-        String filepath = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
+        String filepath = "D:/MeatPictures/";
         File dest = new File(filepath + fileName);
         String picture;
         try {
@@ -190,7 +190,7 @@ public class RstManagerController {
             }
         }
         String fileName1 = Mpicture.getOriginalFilename();
-        String filepath1 = "C:/Users/Administrator/IdeaProjects/salefood/src/main/resources/static/images/";
+        String filepath1 = "D:/MeatPictures/";
         File dest = new File(filepath1 + fileName1);
         String update_picture;
         try {

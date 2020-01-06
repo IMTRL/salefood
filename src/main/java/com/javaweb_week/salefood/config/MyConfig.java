@@ -10,6 +10,7 @@ public class MyConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //配置静态资源路径
-        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/images/");
+        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/images/")
+                .addResourceLocations("file:D:/MeatPictures/");
     }
 }
